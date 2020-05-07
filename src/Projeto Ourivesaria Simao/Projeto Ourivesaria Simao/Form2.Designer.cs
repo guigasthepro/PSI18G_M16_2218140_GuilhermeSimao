@@ -29,27 +29,29 @@
         private void InitializeComponent()
         {
             this.atendimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fichaClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fichaEncomendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cFClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.cFEncomendas = new System.Windows.Forms.ToolStripMenuItem();
+            this.FClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.FEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.oficinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestãoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusEncomendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.stEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.criarOrçamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.históricoOrçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestãoDeStockToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOrçamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.hOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
+            this.gstocko = new System.Windows.Forms.ToolStripMenuItem();
             this.painelAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.apagarEncomendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.apagarFichasDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.apagarOrçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registarUtilizadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aEncomendas = new System.Windows.Forms.ToolStripMenuItem();
+            this.aFClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.aOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
+            this.rUtilizador = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.username = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.criarFichaClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.criarFichaEncomendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.atendimentolevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.administradorlevel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -57,109 +59,125 @@
             // atendimentoToolStripMenuItem
             // 
             this.atendimentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.criarFichaClientesToolStripMenuItem,
-            this.criarFichaEncomendasToolStripMenuItem,
-            this.fichaClientesToolStripMenuItem,
-            this.fichaEncomendasToolStripMenuItem});
+            this.cFClientes,
+            this.cFEncomendas,
+            this.FClientes,
+            this.FEncomendas});
             this.atendimentoToolStripMenuItem.Name = "atendimentoToolStripMenuItem";
             this.atendimentoToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.atendimentoToolStripMenuItem.Text = "Atendimento";
             // 
-            // fichaClientesToolStripMenuItem
+            // cFClientes
             // 
-            this.fichaClientesToolStripMenuItem.Name = "fichaClientesToolStripMenuItem";
-            this.fichaClientesToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.fichaClientesToolStripMenuItem.Text = "Ficha Clientes";
+            this.cFClientes.Name = "cFClientes";
+            this.cFClientes.Size = new System.Drawing.Size(201, 22);
+            this.cFClientes.Text = "Criar Ficha Clientes";
+            this.cFClientes.Click += new System.EventHandler(this.criarFichaClientesToolStripMenuItem_Click);
             // 
-            // fichaEncomendasToolStripMenuItem
+            // cFEncomendas
             // 
-            this.fichaEncomendasToolStripMenuItem.Name = "fichaEncomendasToolStripMenuItem";
-            this.fichaEncomendasToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.fichaEncomendasToolStripMenuItem.Text = "Ficha Encomendas";
+            this.cFEncomendas.Name = "cFEncomendas";
+            this.cFEncomendas.Size = new System.Drawing.Size(201, 22);
+            this.cFEncomendas.Text = "Criar Ficha Encomendas";
+            this.cFEncomendas.Click += new System.EventHandler(this.criarFichaEncomendasToolStripMenuItem_Click);
+            // 
+            // FClientes
+            // 
+            this.FClientes.Name = "FClientes";
+            this.FClientes.Size = new System.Drawing.Size(201, 22);
+            this.FClientes.Text = "Ficha Clientes";
+            this.FClientes.Click += new System.EventHandler(this.fichaClientesToolStripMenuItem_Click);
+            // 
+            // FEncomendas
+            // 
+            this.FEncomendas.Name = "FEncomendas";
+            this.FEncomendas.Size = new System.Drawing.Size(201, 22);
+            this.FEncomendas.Text = "Ficha Encomendas";
+            this.FEncomendas.Click += new System.EventHandler(this.fichaEncomendasToolStripMenuItem_Click);
             // 
             // oficinaToolStripMenuItem
             // 
             this.oficinaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestãoDeStockToolStripMenuItem,
-            this.statusEncomendasToolStripMenuItem});
+            this.gStock,
+            this.stEncomendas});
             this.oficinaToolStripMenuItem.Name = "oficinaToolStripMenuItem";
             this.oficinaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.oficinaToolStripMenuItem.Text = "Oficina";
             // 
-            // gestãoDeStockToolStripMenuItem
+            // gStock
             // 
-            this.gestãoDeStockToolStripMenuItem.Name = "gestãoDeStockToolStripMenuItem";
-            this.gestãoDeStockToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.gestãoDeStockToolStripMenuItem.Text = "Gestão de Stock";
+            this.gStock.Name = "gStock";
+            this.gStock.Size = new System.Drawing.Size(177, 22);
+            this.gStock.Text = "Gestão de Stock";
             // 
-            // statusEncomendasToolStripMenuItem
+            // stEncomendas
             // 
-            this.statusEncomendasToolStripMenuItem.Name = "statusEncomendasToolStripMenuItem";
-            this.statusEncomendasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.statusEncomendasToolStripMenuItem.Text = "Status Encomendas";
+            this.stEncomendas.Name = "stEncomendas";
+            this.stEncomendas.Size = new System.Drawing.Size(177, 22);
+            this.stEncomendas.Text = "Status Encomendas";
             // 
             // orçamentosToolStripMenuItem
             // 
             this.orçamentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.criarOrçamentoToolStripMenuItem,
-            this.históricoOrçamentosToolStripMenuItem,
-            this.gestãoDeStockToolStripMenuItem1});
+            this.cOrçamento,
+            this.hOrçamentos,
+            this.gstocko});
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
             this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.orçamentosToolStripMenuItem.Text = "Orçamentos";
             // 
-            // criarOrçamentoToolStripMenuItem
+            // cOrçamento
             // 
-            this.criarOrçamentoToolStripMenuItem.Name = "criarOrçamentoToolStripMenuItem";
-            this.criarOrçamentoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.criarOrçamentoToolStripMenuItem.Text = "Criar Orçamento";
+            this.cOrçamento.Name = "cOrçamento";
+            this.cOrçamento.Size = new System.Drawing.Size(190, 22);
+            this.cOrçamento.Text = "Criar Orçamento";
             // 
-            // históricoOrçamentosToolStripMenuItem
+            // hOrçamentos
             // 
-            this.históricoOrçamentosToolStripMenuItem.Name = "históricoOrçamentosToolStripMenuItem";
-            this.históricoOrçamentosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.históricoOrçamentosToolStripMenuItem.Text = "Histórico Orçamentos";
+            this.hOrçamentos.Name = "hOrçamentos";
+            this.hOrçamentos.Size = new System.Drawing.Size(190, 22);
+            this.hOrçamentos.Text = "Histórico Orçamentos";
             // 
-            // gestãoDeStockToolStripMenuItem1
+            // gstocko
             // 
-            this.gestãoDeStockToolStripMenuItem1.Name = "gestãoDeStockToolStripMenuItem1";
-            this.gestãoDeStockToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
-            this.gestãoDeStockToolStripMenuItem1.Text = "Gestão de Stock";
+            this.gstocko.Name = "gstocko";
+            this.gstocko.Size = new System.Drawing.Size(190, 22);
+            this.gstocko.Text = "Gestão de Stock";
             // 
             // painelAdminToolStripMenuItem
             // 
             this.painelAdminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.apagarEncomendasToolStripMenuItem,
-            this.apagarFichasDeClientesToolStripMenuItem,
-            this.apagarOrçamentosToolStripMenuItem,
-            this.registarUtilizadorToolStripMenuItem});
+            this.aEncomendas,
+            this.aFClientes,
+            this.aOrçamentos,
+            this.rUtilizador});
             this.painelAdminToolStripMenuItem.Name = "painelAdminToolStripMenuItem";
             this.painelAdminToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.painelAdminToolStripMenuItem.Text = "Painel Admin";
             // 
-            // apagarEncomendasToolStripMenuItem
+            // aEncomendas
             // 
-            this.apagarEncomendasToolStripMenuItem.Name = "apagarEncomendasToolStripMenuItem";
-            this.apagarEncomendasToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.apagarEncomendasToolStripMenuItem.Text = "Apagar Encomendas";
+            this.aEncomendas.Name = "aEncomendas";
+            this.aEncomendas.Size = new System.Drawing.Size(209, 22);
+            this.aEncomendas.Text = "Apagar Encomendas";
             // 
-            // apagarFichasDeClientesToolStripMenuItem
+            // aFClientes
             // 
-            this.apagarFichasDeClientesToolStripMenuItem.Name = "apagarFichasDeClientesToolStripMenuItem";
-            this.apagarFichasDeClientesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.apagarFichasDeClientesToolStripMenuItem.Text = "Apagar Fichas de Clientes";
+            this.aFClientes.Name = "aFClientes";
+            this.aFClientes.Size = new System.Drawing.Size(209, 22);
+            this.aFClientes.Text = "Apagar Fichas de Clientes";
             // 
-            // apagarOrçamentosToolStripMenuItem
+            // aOrçamentos
             // 
-            this.apagarOrçamentosToolStripMenuItem.Name = "apagarOrçamentosToolStripMenuItem";
-            this.apagarOrçamentosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.apagarOrçamentosToolStripMenuItem.Text = "Apagar Orçamentos";
+            this.aOrçamentos.Name = "aOrçamentos";
+            this.aOrçamentos.Size = new System.Drawing.Size(209, 22);
+            this.aOrçamentos.Text = "Apagar Orçamentos";
             // 
-            // registarUtilizadorToolStripMenuItem
+            // rUtilizador
             // 
-            this.registarUtilizadorToolStripMenuItem.Name = "registarUtilizadorToolStripMenuItem";
-            this.registarUtilizadorToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.registarUtilizadorToolStripMenuItem.Text = "Registar Utilizador";
+            this.rUtilizador.Name = "rUtilizador";
+            this.rUtilizador.Size = new System.Drawing.Size(209, 22);
+            this.rUtilizador.Text = "Registar Utilizador";
             // 
             // menuStrip1
             // 
@@ -178,7 +196,9 @@
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.username});
+            this.username,
+            this.atendimentolevel,
+            this.administradorlevel});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -209,17 +229,17 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.programexit);
             // 
-            // criarFichaClientesToolStripMenuItem
+            // atendimentolevel
             // 
-            this.criarFichaClientesToolStripMenuItem.Name = "criarFichaClientesToolStripMenuItem";
-            this.criarFichaClientesToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.criarFichaClientesToolStripMenuItem.Text = "Criar Ficha Clientes";
+            this.atendimentolevel.Name = "atendimentolevel";
+            this.atendimentolevel.Size = new System.Drawing.Size(79, 20);
+            this.atendimentolevel.Text = "{Permlevel}";
             // 
-            // criarFichaEncomendasToolStripMenuItem
+            // administradorlevel
             // 
-            this.criarFichaEncomendasToolStripMenuItem.Name = "criarFichaEncomendasToolStripMenuItem";
-            this.criarFichaEncomendasToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.criarFichaEncomendasToolStripMenuItem.Text = "Criar Ficha Encomendas";
+            this.administradorlevel.Name = "administradorlevel";
+            this.administradorlevel.Size = new System.Drawing.Size(79, 20);
+            this.administradorlevel.Text = "{Permlevel}";
             // 
             // Form2
             // 
@@ -248,26 +268,28 @@
 
         #endregion
         private System.Windows.Forms.ToolStripMenuItem atendimentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fichaClientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fichaEncomendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FClientes;
+        private System.Windows.Forms.ToolStripMenuItem FEncomendas;
         private System.Windows.Forms.ToolStripMenuItem oficinaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestãoDeStockToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem statusEncomendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gStock;
+        private System.Windows.Forms.ToolStripMenuItem stEncomendas;
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem criarOrçamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem históricoOrçamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestãoDeStockToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cOrçamento;
+        private System.Windows.Forms.ToolStripMenuItem hOrçamentos;
+        private System.Windows.Forms.ToolStripMenuItem gstocko;
         private System.Windows.Forms.ToolStripMenuItem painelAdminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem apagarEncomendasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem apagarFichasDeClientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem apagarOrçamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registarUtilizadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aEncomendas;
+        private System.Windows.Forms.ToolStripMenuItem aFClientes;
+        private System.Windows.Forms.ToolStripMenuItem aOrçamentos;
+        private System.Windows.Forms.ToolStripMenuItem rUtilizador;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem username;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem criarFichaClientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem criarFichaEncomendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cFClientes;
+        private System.Windows.Forms.ToolStripMenuItem cFEncomendas;
+        private System.Windows.Forms.ToolStripMenuItem atendimentolevel;
+        private System.Windows.Forms.ToolStripMenuItem administradorlevel;
     }
 }

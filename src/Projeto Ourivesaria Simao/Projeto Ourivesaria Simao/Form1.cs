@@ -74,6 +74,7 @@ namespace Projeto_Ourivesaria_Simao
             {
                 MessageBox.Show("O utilizador não se encontra registado, por favor peça a um administrador para o adicionar!");
             }
+            dbcon.Close();
 
 
         }
