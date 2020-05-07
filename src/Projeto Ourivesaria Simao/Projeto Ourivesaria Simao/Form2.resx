@@ -117,15 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAABGdBTUEAALGPC/xhBQAAAQNJREFUOE/d
-        Uu2OwiAQpGwrKQr2Q8thavSa2EvMPY7v/yq6y3UJJTG5304y2Z3ZBbYF8YGQUi5ZwPMf/EXiuoLCH5JN
-        0kZhrdEAYPp+7507fOX1FQDkBsOqoaqAdk6948Lo4eG0LiKYda0Mia5rB/Zwiivnl8sY6kpVW/ZIM3Ij
-        6mHoSgzppzByLZ7zfKUTCfS3aIL2dHJA+f1+A++PP5RT3blejKP3i46Iu7ZtmJj12ZgtjU6IPeitNCMY
-        Wm/sPH/TKQ/2kA3nZQk0mdBahQkXRsTbwVErjBLHP7BHxDcRHkVRFFPirW6HkF/zYO1uP03nummMRa2y
-        +lvskGnjO34uhHgB1M9cjEyNqEQAAAAASUVORK5CYII=
-</value>
-  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>247, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

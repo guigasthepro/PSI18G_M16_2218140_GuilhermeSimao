@@ -117,15 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAEDSURBVDhP3VLtjsIgEKRsKykK9kPLYWr0mthLzD2O7/8qust1CSUxud9OMtmd2QW2BfGBkFIu
-        WcDzH/xF4rqCwh+STdJGYa3RAGD6fu+dO3zl9RUA5AbDqqGqgHZOvePC6OHhtC4imHWtDImuawf2cIor
-        55fLGOpKVVv2SDNyI+ph6EoM6acwci2e83ylEwn0t2iC9nRyQPn9fgPvjz+UU925Xoyj94uOiLu2bZiY
-        9dmYLY1OiD3orTQjGFpv7Dx/0ykP9pAN52UJNJnQWoUJF0bE28FRK4wSxz+wR8Q3ER5FURRT4q1uh5Bf
-        82Dtbj9N57ppjEWtsvpb7JBp4zt+LoR4AdTPXIxMjahEAAAAAElFTkSuQmCC
-</value>
-  </data>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

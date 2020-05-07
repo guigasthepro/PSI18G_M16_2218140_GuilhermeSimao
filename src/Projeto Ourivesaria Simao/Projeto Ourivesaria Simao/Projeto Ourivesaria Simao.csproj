@@ -47,6 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CFichaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CFichaCliente.Designer.cs">
+      <DependentUpon>CFichaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CFichaEncomenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CFichaEncomenda.Designer.cs">
+      <DependentUpon>CFichaEncomenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FClientes.Designer.cs">
+      <DependentUpon>FClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEncomendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEncomendas.Designer.cs">
+      <DependentUpon>FEncomendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

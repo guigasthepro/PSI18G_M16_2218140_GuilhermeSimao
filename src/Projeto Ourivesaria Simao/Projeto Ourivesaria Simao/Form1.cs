@@ -60,6 +60,9 @@ namespace Projeto_Ourivesaria_Simao
                 if(password.Text == Convert.ToString(dr["pass"]))
                 {
                     MessageBox.Show("Login com sucesso!");
+                    this.Hide();
+                    Form2 form2 = new Form2(username.Text);
+                    form2.ShowDialog();
                 }
                 else
                 {
@@ -73,6 +76,11 @@ namespace Projeto_Ourivesaria_Simao
             }
 
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
 }
