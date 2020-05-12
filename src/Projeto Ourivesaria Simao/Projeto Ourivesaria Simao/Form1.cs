@@ -57,7 +57,7 @@ namespace Projeto_Ourivesaria_Simao
             if (dr.HasRows)
             {
                 dr.Read();
-                if(password.Text == Convert.ToString(dr["pass"]))
+                if (password.Text == Convert.ToString(dr["pass"]))
                 {
                     MessageBox.Show("Login com sucesso!");
                     this.Hide();
@@ -68,7 +68,7 @@ namespace Projeto_Ourivesaria_Simao
                 {
                     MessageBox.Show("Palavra Passe Incorreta!");
                 }
-                
+
             }
             else
             {

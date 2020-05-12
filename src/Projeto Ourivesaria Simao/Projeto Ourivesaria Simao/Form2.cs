@@ -34,7 +34,7 @@ namespace Projeto_Ourivesaria_Simao
                 dr.Read();
                 if (Convert.ToBoolean(dr["atendimento"]))
                 {
-                    
+
                     gStock.Visible = false;
                     stEncomendas.Visible = false;
                     cOrçamento.Visible = false;
@@ -86,14 +86,6 @@ namespace Projeto_Ourivesaria_Simao
                 MessageBox.Show("Erro: Não foi encontrado username com essa nome!");
             }
             dbcon.Close();
-
-
-
-
-
-
-
-
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,7 +102,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void criarFichaClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CFichaCliente cfcmdi = new CFichaCliente();
+            CriarFichaDeCliente cfcmdi = new CriarFichaDeCliente();
             cfcmdi.MdiParent = this;
             cfcmdi.Show();
 
