@@ -50,8 +50,6 @@
             this.username = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.atendimentolevel = new System.Windows.Forms.ToolStripMenuItem();
-            this.administradorlevel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -196,9 +194,7 @@
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.username,
-            this.atendimentolevel,
-            this.administradorlevel});
+            this.username});
             this.menuStrip2.Location = new System.Drawing.Point(0, 24);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -228,18 +224,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.programexit);
-            // 
-            // atendimentolevel
-            // 
-            this.atendimentolevel.Name = "atendimentolevel";
-            this.atendimentolevel.Size = new System.Drawing.Size(79, 20);
-            this.atendimentolevel.Text = "{Permlevel}";
-            // 
-            // administradorlevel
-            // 
-            this.administradorlevel.Name = "administradorlevel";
-            this.administradorlevel.Size = new System.Drawing.Size(79, 20);
-            this.administradorlevel.Text = "{Permlevel}";
             // 
             // Form2
             // 
@@ -289,7 +273,5 @@
         private System.Windows.Forms.ToolStripMenuItem username;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem atendimentolevel;
-        private System.Windows.Forms.ToolStripMenuItem administradorlevel;
     }
 }

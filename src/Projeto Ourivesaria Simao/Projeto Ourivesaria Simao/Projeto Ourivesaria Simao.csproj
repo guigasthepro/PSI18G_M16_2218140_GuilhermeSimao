@@ -88,8 +88,14 @@
     <EmbeddedResource Include="CFichaCliente.resx">
       <DependentUpon>CFichaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CFichaEncomenda.resx">
+      <DependentUpon>CFichaEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FClientes.resx">
       <DependentUpon>FClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEncomendas.resx">
+      <DependentUpon>FEncomendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
