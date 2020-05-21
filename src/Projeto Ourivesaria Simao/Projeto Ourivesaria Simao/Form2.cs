@@ -129,5 +129,26 @@ namespace Projeto_Ourivesaria_Simao
             cemdi.MdiParent = this;
             cemdi.Show();
         }
+
+        private void rUtilizador_Click(object sender, EventArgs e)
+        {
+            RUtilizador rutilizador = new RUtilizador();
+            rutilizador.MdiParent = this;
+            rutilizador.Show();
+        }
+
+        private void aEncomendas_Click(object sender, EventArgs e)
+        {
+            AEncomendas aencomendas = new AEncomendas();
+            aencomendas.MdiParent = this;
+            aencomendas.Show();
+        }
+
+        private void aFClientes_Click(object sender, EventArgs e)
+        {
+            AFClientes afclientes = new AFClientes();
+            afclientes.MdiParent = this;
+            afclientes.Show();
+        }
     }
 }

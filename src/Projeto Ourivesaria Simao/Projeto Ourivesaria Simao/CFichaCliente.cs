@@ -31,7 +31,7 @@ namespace Projeto_Ourivesaria_Simao
 
             MySqlCommand slcmd = new MySqlCommand();
             slcmd.Connection = dbcon;
-            slcmd.CommandText = $"SELECT * FROM fichascliente WHERE nome = '{nomecliente.Text}'";
+            slcmd.CommandText = $"SELECT * FROM fichascliente WHERE nomecliente = '{nomecliente.Text}'";
             MySqlDataReader dr = slcmd.ExecuteReader();
 
             if (dr.HasRows)
@@ -42,9 +42,9 @@ namespace Projeto_Ourivesaria_Simao
             {
                 dr.Close();
                 string insquery = "";
-                insquery = "INSERT INTO fichascliente (nome,telefone,telefonefixo,email,morada) VALUES (@nome,@telefone,@telefonefixo,@email,@morada);";
+                insquery = "INSERT INTO fichascliente (nomecliente,telefone,telefonefixo,email,morada) VALUES (@nomecliente,@telefone,@telefonefixo,@email,@morada);";
                 MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
-                cmd.Parameters.AddWithValue("@nome", nomecliente.Text);
+                cmd.Parameters.AddWithValue("@nomecliente", nomecliente.Text);
                 cmd.Parameters.AddWithValue("@telefone", telefonecliente.Text);
                 cmd.Parameters.AddWithValue("@telefonefixo", telefonefixocliente.Text);
                 cmd.Parameters.AddWithValue("@email", emailcliente.Text);

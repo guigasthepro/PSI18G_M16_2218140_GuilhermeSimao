@@ -47,6 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AEncomendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AEncomendas.Designer.cs">
+      <DependentUpon>AEncomendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AFClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AFClientes.Designer.cs">
+      <DependentUpon>AFClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AOrçamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AOrçamentos.Designer.cs">
+      <DependentUpon>AOrçamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="CFichaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +76,12 @@
     </Compile>
     <Compile Include="CFichaEncomenda.Designer.cs">
       <DependentUpon>CFichaEncomenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="COrçamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COrçamento.Designer.cs">
+      <DependentUpon>COrçamento.cs</DependentUpon>
     </Compile>
     <Compile Include="FClientes.cs">
       <SubType>Form</SubType>
@@ -83,8 +107,32 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GStock.Designer.cs">
+      <DependentUpon>GStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HOrçamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HOrçamento.Designer.cs">
+      <DependentUpon>HOrçamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RUtilizador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RUtilizador.Designer.cs">
+      <DependentUpon>RUtilizador.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AEncomendas.resx">
+      <DependentUpon>AEncomendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AFClientes.resx">
+      <DependentUpon>AFClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CFichaCliente.resx">
       <DependentUpon>CFichaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +151,9 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HOrçamento.resx">
+      <DependentUpon>HOrçamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -112,6 +163,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RUtilizador.resx">
+      <DependentUpon>RUtilizador.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
