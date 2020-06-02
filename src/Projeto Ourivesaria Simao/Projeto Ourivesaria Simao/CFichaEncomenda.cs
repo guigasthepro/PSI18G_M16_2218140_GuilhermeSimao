@@ -31,7 +31,7 @@ namespace Projeto_Ourivesaria_Simao
             InitializeComponent();
             UpdateDataGrid();
         }
-
+        //Neste evento
         private void button1_Click(object sender, EventArgs e)
         {
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
@@ -72,6 +72,7 @@ namespace Projeto_Ourivesaria_Simao
                 if(confirmation.SelectedItem.ToString() == "Sim")
                 {
                     cmd.Parameters.AddWithValue("@pedirorc", "Sim");
+                    //Problema eestá aqui
                     cmd.Parameters.AddWithValue("@statusencomenda", "Aguardando Orçamento...");
                 }
                 else
