@@ -34,7 +34,7 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas ORDER BY data DESC", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas ORDER BY data DESC", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
@@ -46,7 +46,7 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas ORDER BY data ASC", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas ORDER BY data ASC", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
@@ -59,8 +59,8 @@ namespace Projeto_Ourivesaria_Simao
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
             MySqlConnection dbcon = new MySqlConnection(dbcr);
             dbcon.Open();
-
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente LIKE '%{filtro.Text}%'", dbcon);
+             
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente LIKE '%{filtro.Text}%'", dbcon);
             DataTable dtbl = new DataTable();
             myda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
@@ -81,8 +81,8 @@ namespace Projeto_Ourivesaria_Simao
                 te.Text = row.Cells["tipoencomenda"].Value.ToString();
                 de.Text = row.Cells["descricao"].Value.ToString();
                 se.Text = row.Cells["statusencomenda"].Value.ToString();
-                //moradacliente.Text = row.Cells["morada"].Value.ToString();
-
+                //começa.Text = row.Cells["começa"].Value.ToString();
+                //termina.Text = row.Cells["termina"].Value.ToString();
             }
             else
             {

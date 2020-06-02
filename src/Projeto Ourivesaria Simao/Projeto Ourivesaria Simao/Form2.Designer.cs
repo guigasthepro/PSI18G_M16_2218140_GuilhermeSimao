@@ -34,15 +34,14 @@
             this.FClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.FEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.oficinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gStock = new System.Windows.Forms.ToolStripMenuItem();
             this.stEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOrçamento = new System.Windows.Forms.ToolStripMenuItem();
             this.hOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
             this.gstocko = new System.Windows.Forms.ToolStripMenuItem();
             this.painelAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.aFClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.aEncomendas = new System.Windows.Forms.ToolStripMenuItem();
             this.aOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
             this.rUtilizador = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -96,23 +95,17 @@
             // oficinaToolStripMenuItem
             // 
             this.oficinaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gStock,
             this.stEncomendas});
             this.oficinaToolStripMenuItem.Name = "oficinaToolStripMenuItem";
             this.oficinaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.oficinaToolStripMenuItem.Text = "Oficina";
             // 
-            // gStock
-            // 
-            this.gStock.Name = "gStock";
-            this.gStock.Size = new System.Drawing.Size(177, 22);
-            this.gStock.Text = "Gestão de Stock";
-            // 
             // stEncomendas
             // 
             this.stEncomendas.Name = "stEncomendas";
-            this.stEncomendas.Size = new System.Drawing.Size(177, 22);
-            this.stEncomendas.Text = "Status Encomendas";
+            this.stEncomendas.Size = new System.Drawing.Size(183, 22);
+            this.stEncomendas.Text = "Encomendas Oficina";
+            this.stEncomendas.Click += new System.EventHandler(this.stEncomendas_Click);
             // 
             // orçamentosToolStripMenuItem
             // 
@@ -129,18 +122,21 @@
             this.cOrçamento.Name = "cOrçamento";
             this.cOrçamento.Size = new System.Drawing.Size(190, 22);
             this.cOrçamento.Text = "Criar Orçamento";
+            this.cOrçamento.Click += new System.EventHandler(this.cOrçamento_Click);
             // 
             // hOrçamentos
             // 
             this.hOrçamentos.Name = "hOrçamentos";
             this.hOrçamentos.Size = new System.Drawing.Size(190, 22);
             this.hOrçamentos.Text = "Histórico Orçamentos";
+            this.hOrçamentos.Click += new System.EventHandler(this.hOrçamentos_Click);
             // 
             // gstocko
             // 
             this.gstocko.Name = "gstocko";
             this.gstocko.Size = new System.Drawing.Size(190, 22);
             this.gstocko.Text = "Gestão de Stock";
+            this.gstocko.Click += new System.EventHandler(this.gstocko_Click);
             // 
             // painelAdminToolStripMenuItem
             // 
@@ -153,13 +149,6 @@
             this.painelAdminToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.painelAdminToolStripMenuItem.Text = "Painel Admin";
             // 
-            // aEncomendas
-            // 
-            this.aEncomendas.Name = "aEncomendas";
-            this.aEncomendas.Size = new System.Drawing.Size(209, 22);
-            this.aEncomendas.Text = "Apagar Encomendas";
-            this.aEncomendas.Click += new System.EventHandler(this.aEncomendas_Click);
-            // 
             // aFClientes
             // 
             this.aFClientes.Name = "aFClientes";
@@ -167,11 +156,19 @@
             this.aFClientes.Text = "Apagar Fichas de Clientes";
             this.aFClientes.Click += new System.EventHandler(this.aFClientes_Click);
             // 
+            // aEncomendas
+            // 
+            this.aEncomendas.Name = "aEncomendas";
+            this.aEncomendas.Size = new System.Drawing.Size(209, 22);
+            this.aEncomendas.Text = "Apagar Encomendas";
+            this.aEncomendas.Click += new System.EventHandler(this.aEncomendas_Click);
+            // 
             // aOrçamentos
             // 
             this.aOrçamentos.Name = "aOrçamentos";
             this.aOrçamentos.Size = new System.Drawing.Size(209, 22);
             this.aOrçamentos.Text = "Apagar Orçamentos";
+            this.aOrçamentos.Click += new System.EventHandler(this.aOrçamentos_Click);
             // 
             // rUtilizador
             // 
@@ -213,6 +210,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(79, 20);
             this.username.Text = "{username}";
+            this.username.Click += new System.EventHandler(this.username_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -258,7 +256,6 @@
         private System.Windows.Forms.ToolStripMenuItem FClientes;
         private System.Windows.Forms.ToolStripMenuItem FEncomendas;
         private System.Windows.Forms.ToolStripMenuItem oficinaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gStock;
         private System.Windows.Forms.ToolStripMenuItem stEncomendas;
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOrçamento;

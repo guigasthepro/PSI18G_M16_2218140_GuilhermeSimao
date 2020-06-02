@@ -119,8 +119,20 @@
     <Compile Include="HOrçamento.Designer.cs">
       <DependentUpon>HOrçamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Oficina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oficina.Designer.cs">
+      <DependentUpon>Oficina.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PVPFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PVPFinal.Designer.cs">
+      <DependentUpon>PVPFinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="RUtilizador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,11 +145,17 @@
     <EmbeddedResource Include="AFClientes.resx">
       <DependentUpon>AFClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AOrçamentos.resx">
+      <DependentUpon>AOrçamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CFichaCliente.resx">
       <DependentUpon>CFichaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CFichaEncomenda.resx">
       <DependentUpon>CFichaEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COrçamento.resx">
+      <DependentUpon>COrçamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FClientes.resx">
       <DependentUpon>FClientes.cs</DependentUpon>
@@ -151,8 +169,14 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GStock.resx">
+      <DependentUpon>GStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HOrçamento.resx">
       <DependentUpon>HOrçamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oficina.resx">
+      <DependentUpon>Oficina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +187,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PVPFinal.resx">
+      <DependentUpon>PVPFinal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RUtilizador.resx">
       <DependentUpon>RUtilizador.cs</DependentUpon>
     </EmbeddedResource>

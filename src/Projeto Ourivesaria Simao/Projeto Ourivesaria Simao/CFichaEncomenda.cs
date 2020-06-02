@@ -56,11 +56,11 @@ namespace Projeto_Ourivesaria_Simao
                 cmd.Parameters.AddWithValue("@nomeencomenda", nomeencomenda.Text);
 
                 //Este if indica que tipo de encomenda ele vai inserir na base de dados
-                if(Convert.ToString(tserv.SelectedIndex) == "Arranjo" )
+                if(tserv.SelectedItem.ToString() == "Arranjo")
                 {
                     cmd.Parameters.AddWithValue("@tipoencomenda", "Arranjo");
                 }
-                else if(Convert.ToString(tserv.SelectedIndex) == "Orçamento")
+                else if(tserv.SelectedItem.ToString() == "Orçamento")
                 {
                     cmd.Parameters.AddWithValue("@tipoencomenda", "Orçamento");
                 }
@@ -68,9 +68,8 @@ namespace Projeto_Ourivesaria_Simao
                 {
                     cmd.Parameters.AddWithValue("@tipoencomenda", "Produção");
                 }
-
                 //este if vai indicar se o cliente pediu ou não orçamento
-                if(Convert.ToString(confirmation.SelectedIndex) == "Sim")
+                if(confirmation.SelectedItem.ToString() == "Sim")
                 {
                     cmd.Parameters.AddWithValue("@pedirorc", "Sim");
                     cmd.Parameters.AddWithValue("@statusencomenda", "Aguardando Orçamento...");

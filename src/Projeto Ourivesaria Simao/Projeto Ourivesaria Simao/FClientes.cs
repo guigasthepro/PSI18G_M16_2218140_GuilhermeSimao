@@ -13,6 +13,8 @@ namespace Projeto_Ourivesaria_Simao
 {
     public partial class FClientes : Form
     {
+        string nomeencomenda;
+        string blahblah;
         public void UpdateDataGrid()
         {
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
@@ -40,7 +42,7 @@ namespace Projeto_Ourivesaria_Simao
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
 
-                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT nomecliente, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
+                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomeencomenda, nomecliente, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
                 DataTable dtbl2 = new DataTable();
                 myda2.Fill(dtbl2);
                 dataGridView2.DataSource = dtbl2;
@@ -51,6 +53,7 @@ namespace Projeto_Ourivesaria_Simao
                 emailcliente.Text = row.Cells["email"].Value.ToString();
                 moradacliente.Text = row.Cells["morada"].Value.ToString();
                 mudarbtn.Visible = true;
+
             }
             else
             {
@@ -116,7 +119,7 @@ namespace Projeto_Ourivesaria_Simao
             dbcon.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(ordenar.SelectedItem == "Mais Recente")
             {
@@ -144,9 +147,60 @@ namespace Projeto_Ourivesaria_Simao
             }
         }
 
-        private void entregue_Click(object sender, EventArgs e)
-        {
 
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
+
+                nomeencomenda = row.Cells["nomeencomenda"].Value.ToString();
+                statusenc.Text = row.Cells["idencomenda"].Value.ToString();
+
+            }
+            else
+            {
+
+            }
+            dbcon.Close();
+        }
+        public void entregue_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                MySqlCommand slcmd = new MySqlCommand();
+                slcmd.Connection = dbcon;
+                slcmd.CommandText = $"SELECT * FROM encomendas WHERE idencomenda = '{statusenc.Text}'";
+                MySqlDataReader dr = slcmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    dr.Close();
+                    string updtquery;
+                    updtquery = $"UPDATE encomendas SET statusencomenda=@statusencomenda WHERE idencomenda= '{statusenc.Text}'";
+                    MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
+                    ucmd.Parameters.AddWithValue("@statusencomenda", "Entregue");
+                    ucmd.ExecuteNonQuery();
+                    dbcon.Close();
+                    MessageBox.Show("A encomenda foi entregue com sucesso");
+                }
+                else
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro : " + ex);
+            }
         }
     }
 }

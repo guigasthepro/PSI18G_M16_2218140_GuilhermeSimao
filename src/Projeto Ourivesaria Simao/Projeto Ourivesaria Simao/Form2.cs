@@ -34,8 +34,6 @@ namespace Projeto_Ourivesaria_Simao
                 dr.Read();
                 if (Convert.ToBoolean(dr["atendimento"]))
                 {
-
-                    gStock.Visible = false;
                     stEncomendas.Visible = false;
                     cOrçamento.Visible = false;
                     hOrçamentos.Visible = false;
@@ -66,7 +64,6 @@ namespace Projeto_Ourivesaria_Simao
                     FClientes.Visible = false;
                     cFEncomendas.Visible = false;
                     cFClientes.Visible = false;
-                    gStock.Visible = false;
                     stEncomendas.Visible = false;
                     aEncomendas.Visible = false;
                     aFClientes.Visible = false;
@@ -149,6 +146,47 @@ namespace Projeto_Ourivesaria_Simao
             AFClientes afclientes = new AFClientes();
             afclientes.MdiParent = this;
             afclientes.Show();
+        }
+
+        private void cOrçamento_Click(object sender, EventArgs e)
+        {
+            COrçamento co = new COrçamento();
+            co.MdiParent = this;
+            co.Show();
+        }
+
+        private void gstocko_Click(object sender, EventArgs e)
+        {
+            GStock gs = new GStock();
+            gs.MdiParent = this;
+            gs.Show();
+        }
+
+        private void hOrçamentos_Click(object sender, EventArgs e)
+        {
+            HOrçamento ho = new HOrçamento();
+            ho.MdiParent = this;
+            ho.Show();
+        }
+
+        private void username_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aOrçamentos_Click(object sender, EventArgs e)
+        {
+            AOrçamentos ao = new AOrçamentos();
+            ao.MdiParent = this;
+            ao.Show();
+
+        }
+
+        private void stEncomendas_Click(object sender, EventArgs e)
+        {
+            Oficina ofc = new Oficina();
+            ofc.MdiParent = this;
+            ofc.Show();
         }
     }
 }

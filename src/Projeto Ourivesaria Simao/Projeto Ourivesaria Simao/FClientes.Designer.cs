@@ -50,7 +50,9 @@
             this.ordenar = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.filtro = new System.Windows.Forms.TextBox();
-            this.entregue = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.statusenc = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +68,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(1079, 185);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.TabStop = false;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // label1
             // 
@@ -276,15 +279,31 @@
             this.filtro.TabIndex = 35;
             this.filtro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // entregue
+            // button1
             // 
-            this.entregue.Location = new System.Drawing.Point(1000, 607);
-            this.entregue.Name = "entregue";
-            this.entregue.Size = new System.Drawing.Size(75, 23);
-            this.entregue.TabIndex = 36;
-            this.entregue.Text = "Entregue";
-            this.entregue.UseVisualStyleBackColor = true;
-            this.entregue.Click += new System.EventHandler(this.entregue_Click);
+            this.button1.Location = new System.Drawing.Point(1003, 635);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Entregue";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.entregue_Click);
+            // 
+            // statusenc
+            // 
+            this.statusenc.Location = new System.Drawing.Point(897, 635);
+            this.statusenc.Name = "statusenc";
+            this.statusenc.Size = new System.Drawing.Size(100, 22);
+            this.statusenc.TabIndex = 37;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(797, 638);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(97, 16);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "IDEncomenda:";
             // 
             // FClientes
             // 
@@ -293,8 +312,10 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(1079, 642);
-            this.Controls.Add(this.entregue);
+            this.ClientSize = new System.Drawing.Size(1079, 658);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.statusenc);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.filtro);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.ordenar);
@@ -354,5 +375,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox filtro;
         private System.Windows.Forms.Button entregue;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox statusenc;
+        private System.Windows.Forms.Label label9;
     }
 }

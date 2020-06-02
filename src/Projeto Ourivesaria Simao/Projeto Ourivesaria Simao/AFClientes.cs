@@ -51,7 +51,7 @@ namespace Projeto_Ourivesaria_Simao
             MySqlConnection dbcon = new MySqlConnection(dbcr);
             dbcon.Open();
             string dquery;
-            dquery = $"DELETE FROM fichascliente WHERE nrcliente = {encomenda.Text}";
+            dquery = $"DELETE FROM fichascliente WHERE nrcliente = '{encomenda.Text}'";
             MySqlDataAdapter de = new MySqlDataAdapter(dquery, dbcon);
             de.SelectCommand.ExecuteNonQuery();
             dbcon.Close();
