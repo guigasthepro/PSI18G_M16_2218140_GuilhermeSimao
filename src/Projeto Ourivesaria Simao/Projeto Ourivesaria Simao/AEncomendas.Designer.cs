@@ -57,6 +57,7 @@
             this.filtro.Name = "filtro";
             this.filtro.Size = new System.Drawing.Size(132, 20);
             this.filtro.TabIndex = 45;
+            this.filtro.TextChanged += new System.EventHandler(this.filtro_TextChanged);
             // 
             // label10
             // 
@@ -80,6 +81,7 @@
             this.ordenar.Name = "ordenar";
             this.ordenar.Size = new System.Drawing.Size(160, 21);
             this.ordenar.TabIndex = 43;
+            this.ordenar.SelectedIndexChanged += new System.EventHandler(this.ordenar_SelectedIndexChanged);
             // 
             // label8
             // 

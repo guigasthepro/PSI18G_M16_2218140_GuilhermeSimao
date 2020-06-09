@@ -43,11 +43,6 @@ namespace Projeto_Ourivesaria_Simao
 
         }
 
-        private void filtro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ordenar.SelectedItem == "Mais Recente")

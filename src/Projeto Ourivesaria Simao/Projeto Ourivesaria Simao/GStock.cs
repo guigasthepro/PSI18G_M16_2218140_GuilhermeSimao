@@ -13,6 +13,7 @@ namespace Projeto_Ourivesaria_Simao
 {
     public partial class GStock : Form
     {
+        int qtd;
         public GStock()
         {
             InitializeComponent();
@@ -53,6 +54,9 @@ namespace Projeto_Ourivesaria_Simao
         }
         private void editar_Click(object sender, EventArgs e)
         {
+            lnome.Visible = false;
+            tnome.Visible = false;
+
             lquantidade.Visible = true;
             tquantidade.Visible = true;
 
@@ -67,8 +71,17 @@ namespace Projeto_Ourivesaria_Simao
         }
         private void remover_Click(object sender, EventArgs e)
         {
+            lnome.Visible = false;
+            tnome.Visible = false;
+
             lquantidade.Visible = true;
             tquantidade.Visible = true;
+
+            lfornecedor.Visible = false;
+            tfornecedor.Visible = false;
+
+            lpreco.Visible = false;
+            tpreco.Visible = false;
 
             allfunctions.Text = "Remover";
             allfunctions.Visible = true;
@@ -76,7 +89,7 @@ namespace Projeto_Ourivesaria_Simao
 
 
 
-        private void allfunctions_Click(object sender, EventArgs e)
+        public void allfunctions_Click(object sender, EventArgs e)
         {
             if(allfunctions.Text.ToString() == "Adicionar")
             {
@@ -107,6 +120,7 @@ namespace Projeto_Ourivesaria_Simao
                 ucmd.ExecuteNonQuery();
                 MessageBox.Show("Item editado com sucesso");
                 dbcon.Close();
+                LoadDataGrid();
 
             }
             else if(allfunctions.Text.ToString() == "Remover")
@@ -116,28 +130,98 @@ namespace Projeto_Ourivesaria_Simao
                 dbcon.Open();
                 string updtquery = $"UPDATE stock SET quantidade=@quantidade WHERE produtoid = '{pid.Text}'";
                 MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
-                ucmd.Parameters.AddWithValue("quantidade",tquantidade.Text);
+                qtd = qtd - Convert.ToInt32(tquantidade.Text);
+                ucmd.Parameters.AddWithValue("quantidade",qtd);
                 ucmd.ExecuteNonQuery();
                 MessageBox.Show("Item removido com sucesso");
                 dbcon.Close();
+                LoadDataGrid();
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
                 pid.Text = row.Cells["produtoid"].Value.ToString();
+
+                try
+                {
+                    qtd = Convert.ToInt32(row.Cells["quantidade"].Value);
+                    remover.Visible = true;
+                    editar.Visible = true;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("´Selecione um utilizador valido");
+                    remover.Visible = false;
+                    editar.Visible = false;
+                }          
+                
             }
             else
             {
 
             }
-            remover.Visible = true;
-            editar.Visible = true;
+
 
         }
+
+        private void filtro_TextChanged(object sender, EventArgs e)
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock WHERE nome LIKE '%{filtro.Text}%' OR fornecedor LIKE '%{filtro.Text}%'", dbcon);
+            DataTable dtbl = new DataTable();
+            myda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dbcon.Close();
+        }
+
+        private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ordenar.SelectedItem == "Mais Recente")
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock ORDER BY data DESC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            else
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock ORDER BY data ASC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+        }
+
+        public void LoadDataGrid()
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT produtoid, nome, quantidade, fornecedor, preço FROM stock", dbcon);
+            DataTable dtbl = new DataTable();
+            myda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dbcon.Close();
+        }
+
     }
 }

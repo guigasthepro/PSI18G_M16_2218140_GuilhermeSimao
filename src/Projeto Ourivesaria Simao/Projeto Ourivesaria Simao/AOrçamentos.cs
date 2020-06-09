@@ -36,7 +36,7 @@ namespace Projeto_Ourivesaria_Simao
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
                 orc.Text = row.Cells["idorçamento"].Value.ToString();
-
+                apagarbtn.Visible = true;
             }
             else
             {
@@ -56,10 +56,51 @@ namespace Projeto_Ourivesaria_Simao
             dbcon.Close();
             MessageBox.Show("Ficha de cliente apagada.");
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idorçamento, ideencomenda FROM horçamento", dbcon);
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idorçamento, idencomenda FROM horçamento", dbcon);
             DataTable dtbl = new DataTable();
             myda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
+        }
+
+        private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ordenar.SelectedItem == "Mais Recente")
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idorçamento, idencomenda FROM horçamento ORDER BY data DESC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            else
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idorçamento, idencomenda FROM horçamento ORDER BY data ASC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+        }
+
+        private void filtro_TextChanged(object sender, EventArgs e)
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT SELECT idorçamento, idencomenda FROM horçamento WHERE idorçamento LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
+            DataTable dtbl = new DataTable();
+            myda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dbcon.Close();
         }
     }
 }

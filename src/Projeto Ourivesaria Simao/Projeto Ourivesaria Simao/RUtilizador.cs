@@ -57,6 +57,7 @@ namespace Projeto_Ourivesaria_Simao
                     cmd.ExecuteNonQuery();
                     dbcon.Close();
                 }
+                MessageBox.Show("User do antendimento criado com sucesso!");
             }
             else if (tipoutilizador.SelectedItem == "oficina")
             {
@@ -88,6 +89,7 @@ namespace Projeto_Ourivesaria_Simao
                     cmd.ExecuteNonQuery();
                     dbcon.Close();
                 }
+                MessageBox.Show("User da oficina criado com sucesso!");
             }
             else if (tipoutilizador.SelectedItem == "orçamento")
             {
@@ -119,6 +121,7 @@ namespace Projeto_Ourivesaria_Simao
                     cmd.ExecuteNonQuery();
                     dbcon.Close();
                 }
+                MessageBox.Show("User admin criado com sucesso!");
             }
             else
             {
@@ -128,7 +131,7 @@ namespace Projeto_Ourivesaria_Simao
 
                 MySqlCommand slcmd = new MySqlCommand();
                 slcmd.Connection = dbcon;
-                slcmd.CommandText = $"SELECT * FROM login WHERE nome = '{nomeutilizador.Text}'";
+                slcmd.CommandText = $"SELECT * FROM login WHERE user = '{nomeutilizador.Text}'";
                 MySqlDataReader dr = slcmd.ExecuteReader();
 
                 if (dr.HasRows)
@@ -139,7 +142,7 @@ namespace Projeto_Ourivesaria_Simao
                 {
                     dr.Close();
                     string insquery = "";
-                    insquery = "INSERT INTO login (user,pass,atendimento,oficina,orçamento,administrador) VALUES (@user,@pass,@atendimento,@oficina,@orçamento,@administrador);";
+                    insquery = "INSERT INTO login (user, pass, atendimento, oficina, orçamento, administrador) VALUES (@user, @pass, @atendimento, @oficina, @orçamento,@administrador);";
                     MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
                     cmd.Parameters.AddWithValue("@user", nomeutilizador.Text);
                     cmd.Parameters.AddWithValue("@pass", password.Text);
@@ -150,6 +153,7 @@ namespace Projeto_Ourivesaria_Simao
                     cmd.ExecuteNonQuery();
                     dbcon.Close();
                 }
+                MessageBox.Show("User da oficina criado com sucesso!");
             }
         }
     }

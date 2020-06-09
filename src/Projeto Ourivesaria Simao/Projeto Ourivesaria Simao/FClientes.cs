@@ -183,6 +183,9 @@ namespace Projeto_Ourivesaria_Simao
 
                 if (dr.HasRows)
                 {
+                    dr.Read();
+                    if(dr["statusencomenda"].ToString() == "Concluido")
+                    {
                     dr.Close();
                     string updtquery;
                     updtquery = $"UPDATE encomendas SET statusencomenda=@statusencomenda WHERE idencomenda= '{statusenc.Text}'";
@@ -191,6 +194,11 @@ namespace Projeto_Ourivesaria_Simao
                     ucmd.ExecuteNonQuery();
                     dbcon.Close();
                     MessageBox.Show("A encomenda foi entregue com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("A encomenda não esta concluida");
+                    }
                 }
                 else
                 {

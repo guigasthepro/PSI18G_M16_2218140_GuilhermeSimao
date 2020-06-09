@@ -49,6 +49,7 @@
             this.username = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preçoFinalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +113,8 @@
             this.orçamentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cOrçamento,
             this.hOrçamentos,
-            this.gstocko});
+            this.gstocko,
+            this.preçoFinalToolStripMenuItem});
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
             this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.orçamentosToolStripMenuItem.Text = "Orçamentos";
@@ -226,6 +228,13 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.programexit);
             // 
+            // preçoFinalToolStripMenuItem
+            // 
+            this.preçoFinalToolStripMenuItem.Name = "preçoFinalToolStripMenuItem";
+            this.preçoFinalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.preçoFinalToolStripMenuItem.Text = "Preço Final";
+            this.preçoFinalToolStripMenuItem.Click += new System.EventHandler(this.preçoFinalToolStripMenuItem_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,5 +282,6 @@
         private System.Windows.Forms.ToolStripMenuItem username;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem preçoFinalToolStripMenuItem;
     }
 }

@@ -122,7 +122,7 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data DESC", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data DESC", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
@@ -134,12 +134,25 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data ASC", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data ASC", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
                 dbcon.Close();
             }
+        }
+
+        private void filtro_TextChanged(object sender, EventArgs e)
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento WHERE idorçamento LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
+            DataTable dtbl = new DataTable();
+            myda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dbcon.Close();
         }
     }
 }

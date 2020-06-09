@@ -74,6 +74,7 @@
             this.ordenar.Name = "ordenar";
             this.ordenar.Size = new System.Drawing.Size(121, 21);
             this.ordenar.TabIndex = 119;
+            this.ordenar.SelectedIndexChanged += new System.EventHandler(this.ordenar_SelectedIndexChanged);
             // 
             // label8
             // 

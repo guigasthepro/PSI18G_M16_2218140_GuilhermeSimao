@@ -54,15 +54,16 @@
             // 
             // filtro
             // 
-            this.filtro.Location = new System.Drawing.Point(764, 3);
+            this.filtro.Location = new System.Drawing.Point(780, 4);
             this.filtro.Name = "filtro";
             this.filtro.Size = new System.Drawing.Size(100, 20);
             this.filtro.TabIndex = 48;
+            this.filtro.TextChanged += new System.EventHandler(this.filtro_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(697, 6);
+            this.label10.Location = new System.Drawing.Point(725, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 47;
@@ -74,15 +75,16 @@
             this.ordenar.Items.AddRange(new object[] {
             "Mais Recente",
             "Mais Antigo"});
-            this.ordenar.Location = new System.Drawing.Point(954, 2);
+            this.ordenar.Location = new System.Drawing.Point(954, 3);
             this.ordenar.Name = "ordenar";
             this.ordenar.Size = new System.Drawing.Size(121, 21);
             this.ordenar.TabIndex = 46;
+            this.ordenar.SelectedIndexChanged += new System.EventHandler(this.ordenar_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(870, 6);
+            this.label8.Location = new System.Drawing.Point(886, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 45;

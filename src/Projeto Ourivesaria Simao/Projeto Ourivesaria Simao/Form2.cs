@@ -188,5 +188,12 @@ namespace Projeto_Ourivesaria_Simao
             ofc.MdiParent = this;
             ofc.Show();
         }
+
+        private void preçoFinalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PVPFinal pvpf = new PVPFinal();
+            pvpf.MdiParent = this;
+            pvpf.Show();
+        }
     }
 }

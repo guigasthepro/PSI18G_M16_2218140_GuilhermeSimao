@@ -59,5 +59,46 @@ namespace Projeto_Ourivesaria_Simao
 
             UpdateDataGrid();
         }
+
+        private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ordenar.SelectedItem == "Mais Recente")
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data DESC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            else
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data ASC", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+        }
+
+        private void filtro_TextChanged(object sender, EventArgs e)
+        {
+            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+            MySqlConnection dbcon = new MySqlConnection(dbcr);
+            dbcon.Open();
+
+            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente WHERE nomecliente LIKE '%{filtro.Text}%' OR nrcliente LIKE '%{filtro.Text}%' OR telefone LIKE '%{filtro.Text}%'", dbcon);
+            DataTable dtbl = new DataTable();
+            myda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dbcon.Close();
+        }
     }
 }
