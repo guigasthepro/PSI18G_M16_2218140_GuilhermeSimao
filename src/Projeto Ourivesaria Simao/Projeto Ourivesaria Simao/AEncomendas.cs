@@ -15,13 +15,20 @@ namespace Projeto_Ourivesaria_Simao
     {
         public void UpdateDataGrid()
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-            MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas", dbcon);
-            DataTable dtbl2 = new DataTable();
-            myda2.Fill(dtbl2);
-            dataGridView1.DataSource = dtbl2;
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas", dbcon);
+                DataTable dtbl2 = new DataTable();
+                myda2.Fill(dtbl2);
+                dataGridView1.DataSource = dtbl2;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public AEncomendas()
         {
@@ -46,15 +53,23 @@ namespace Projeto_Ourivesaria_Simao
 
         private void apagarbtn_Click(object sender, EventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-            string dquery;
-            dquery = $"DELETE FROM encomendas WHERE idencomenda = {encomenda.Text}";
-            MySqlDataAdapter de = new MySqlDataAdapter(dquery, dbcon);
-            de.SelectCommand.ExecuteNonQuery();
-            dbcon.Close();
-            MessageBox.Show("Ficha de cliente apagada.");
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                string dquery;
+                dquery = $"DELETE FROM encomendas WHERE idencomenda = {encomenda.Text}";
+                MySqlDataAdapter de = new MySqlDataAdapter(dquery, dbcon);
+                de.SelectCommand.ExecuteNonQuery();
+                dbcon.Close();
+                MessageBox.Show("Ficha de cliente apagada.");
+            }
+            catch(Exception ex)
+            {
+
+            }
+
 
             UpdateDataGrid();
 
@@ -64,41 +79,63 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+
+                }
+
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
         }
 
         private void filtro_TextChanged(object sender, EventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas WHERE nomeencomenda LIKE '%{filtro.Text}%' OR nomecliente LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda FROM encomendas WHERE nomeencomenda LIKE '%{filtro.Text}%' OR nomecliente LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -15,14 +15,22 @@ namespace Projeto_Ourivesaria_Simao
     {
         public void UpdateDataGrid()
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nrcliente,nomecliente,telefone,telefonefixo,email,morada FROM fichascliente", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nrcliente,nomecliente,telefone,telefonefixo,email,morada FROM fichascliente", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+            }
+
         }
 
         public AFClientes()
@@ -47,15 +55,23 @@ namespace Projeto_Ourivesaria_Simao
 
         private void apagarbtn_Click(object sender, EventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-            string dquery;
-            dquery = $"DELETE FROM fichascliente WHERE nrcliente = '{encomenda.Text}'";
-            MySqlDataAdapter de = new MySqlDataAdapter(dquery, dbcon);
-            de.SelectCommand.ExecuteNonQuery();
-            dbcon.Close();
-            MessageBox.Show("Ficha de cliente apagada.");
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                string dquery;
+                dquery = $"DELETE FROM fichascliente WHERE nrcliente = '{encomenda.Text}'";
+                MySqlDataAdapter de = new MySqlDataAdapter(dquery, dbcon);
+                de.SelectCommand.ExecuteNonQuery();
+                dbcon.Close();
+                MessageBox.Show("Ficha de cliente apagada.");
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possivél apagar a ficha do cliente");
+            }
+
 
             UpdateDataGrid();
         }
@@ -64,32 +80,50 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                }
+
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                }
+
             }
         }
 
         private void filtro_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
             MySqlConnection dbcon = new MySqlConnection(dbcr);
             dbcon.Open();
@@ -99,6 +133,11 @@ namespace Projeto_Ourivesaria_Simao
             myda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
             dbcon.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+            }
         }
     }
 }

@@ -34,7 +34,6 @@
             this.user = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.teste = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // username
@@ -95,15 +94,6 @@
             this.button2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
             this.button2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button2_MouseUp);
             // 
-            // teste
-            // 
-            this.teste.AutoSize = true;
-            this.teste.Location = new System.Drawing.Point(131, 213);
-            this.teste.Name = "teste";
-            this.teste.Size = new System.Drawing.Size(35, 13);
-            this.teste.TabIndex = 7;
-            this.teste.Text = "label3";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,7 +103,6 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(300, 246);
-            this.Controls.Add(this.teste);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.user);
@@ -136,7 +125,6 @@
         private System.Windows.Forms.Label user;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label teste;
     }
 }
 

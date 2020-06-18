@@ -17,14 +17,21 @@ namespace Projeto_Ourivesaria_Simao
         string blahblah;
         public void UpdateDataGrid()
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente,telefone,telefonefixo,email,morada FROM fichascliente", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente,telefone,telefonefixo,email,morada FROM fichascliente", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public FClientes()
         {
@@ -33,33 +40,40 @@ namespace Projeto_Ourivesaria_Simao
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
 
-                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomeencomenda, nomecliente, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
-                DataTable dtbl2 = new DataTable();
-                myda2.Fill(dtbl2);
-                dataGridView2.DataSource = dtbl2;
+                    MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomeencomenda, nomecliente, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
+                    DataTable dtbl2 = new DataTable();
+                    myda2.Fill(dtbl2);
+                    dataGridView2.DataSource = dtbl2;
 
-                nomecliente.Text = row.Cells["nomecliente"].Value.ToString();
-                telefonecliente.Text = row.Cells["telefone"].Value.ToString();
-                telefonefcliente.Text = row.Cells["telefonefixo"].Value.ToString();
-                emailcliente.Text = row.Cells["email"].Value.ToString();
-                moradacliente.Text = row.Cells["morada"].Value.ToString();
-                mudarbtn.Visible = true;
+                    nomecliente.Text = row.Cells["nomecliente"].Value.ToString();
+                    telefonecliente.Text = row.Cells["telefone"].Value.ToString();
+                    telefonefcliente.Text = row.Cells["telefonefixo"].Value.ToString();
+                    emailcliente.Text = row.Cells["email"].Value.ToString();
+                    moradacliente.Text = row.Cells["morada"].Value.ToString();
+                    mudarbtn.Visible = true;
+
+                }
+                else
+                {
+
+                }
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
 
             }
-            else
-            {
-
-            }
-            dbcon.Close();
         }
 
         private void mudar(object sender, EventArgs e)
@@ -73,21 +87,27 @@ namespace Projeto_Ourivesaria_Simao
 
         private void aplicarbtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
+                string updtquery;
+                updtquery = $"UPDATE fichascliente SET nomecliente=@nomecliente ,telefone=@telefone, telefonefixo=@telefonefixo, email=@email, morada=@morada  WHERE nomecliente = '{nomecliente.Text}'";
+                MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
 
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
-            string updtquery;
-            updtquery = $"UPDATE fichascliente SET nomecliente=@nomecliente ,telefone=@telefone, telefonefixo=@telefonefixo, email=@email, morada=@morada  WHERE nomecliente = '{nomecliente.Text}'";
-            MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
+                ucmd.Parameters.AddWithValue("@nomecliente", nomecliente.Text);
+                ucmd.Parameters.AddWithValue("@telefone", telefonecliente.Text);
+                ucmd.Parameters.AddWithValue("@telefonefixo", telefonefcliente.Text);
+                ucmd.Parameters.AddWithValue("@email", emailcliente.Text);
+                ucmd.Parameters.AddWithValue("@morada", moradacliente.Text);
+                ucmd.ExecuteNonQuery();
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
 
-            ucmd.Parameters.AddWithValue("@nomecliente", nomecliente.Text);
-            ucmd.Parameters.AddWithValue("@telefone", telefonecliente.Text);
-            ucmd.Parameters.AddWithValue("@telefonefixo", telefonefcliente.Text);
-            ucmd.Parameters.AddWithValue("@email", emailcliente.Text);
-            ucmd.Parameters.AddWithValue("@morada", moradacliente.Text);
-            ucmd.ExecuteNonQuery();
-            dbcon.Close();
+            }
 
             UpdateDataGrid();
 
@@ -108,42 +128,64 @@ namespace Projeto_Ourivesaria_Simao
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente WHERE nomecliente LIKE '%{filtro.Text}%' OR nrcliente LIKE '%{filtro.Text}%' OR telefone LIKE '%{filtro.Text}%'" , dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente WHERE nomecliente LIKE '%{filtro.Text}%' OR nrcliente LIKE '%{filtro.Text}%' OR telefone LIKE '%{filtro.Text}%'", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
 
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nomecliente, telefone, telefonefixo, email, morada FROM fichascliente ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
         }
 

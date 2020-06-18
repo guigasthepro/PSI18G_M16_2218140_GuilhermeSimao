@@ -17,6 +17,14 @@ namespace Projeto_Ourivesaria_Simao
         {
             InitializeComponent();
 
+            try 
+            {
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro: " +  ex);
+            }
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
             MySqlConnection dbcon = new MySqlConnection(dbcr);
             dbcon.Open();
@@ -74,39 +82,45 @@ namespace Projeto_Ourivesaria_Simao
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
-                MySqlCommand slcmd = new MySqlCommand();
-                slcmd.Connection = dbcon;
-                slcmd.CommandText = $"SELECT * FROM horçamento WHERE idorçamento = '{row.Cells["idorçamento"].Value.ToString()}'";
-                MySqlDataReader dr = slcmd.ExecuteReader();
-                if (dr.HasRows)
+                try
                 {
-                    dr.Read();
-                    metal.Text = Convert.ToString(dr["metal"]);
-                    pedras.Text = Convert.ToString(dr["pedras"]);
-                    pedras1.Text = Convert.ToString(dr["pedras1"]);
-                    pedras2.Text = Convert.ToString(dr["pedras2"]);
-                    pedras3.Text = Convert.ToString(dr["pedras3"]);
-                    pedras4.Text = Convert.ToString(dr["pedras4"]);
-                    pedras5.Text = Convert.ToString(dr["pedras5"]);
-                    fundicao.Text = Convert.ToString(dr["fundicao"]);
-                    feitio.Text = Convert.ToString(dr["feitio"]);
-                    cravacao.Text = Convert.ToString(dr["cravacao"]);
-                    polimento.Text = Convert.ToString(dr["polimento"]);
-                    banhoródio.Text = Convert.ToString(dr["banhorodio"]);
-                    incm.Text = Convert.ToString(dr["incm"]);
-                    abertura.Text = Convert.ToString(dr["abertura"]);
-                    preco.Text = Convert.ToString(dr["preco"]);
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
 
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
+                    MySqlCommand slcmd = new MySqlCommand();
+                    slcmd.Connection = dbcon;
+                    slcmd.CommandText = $"SELECT * FROM horçamento WHERE idorçamento = '{row.Cells["idorçamento"].Value.ToString()}'";
+                    MySqlDataReader dr = slcmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        dr.Read();
+                        metal.Text = Convert.ToString(dr["metal"]);
+                        pedras.Text = Convert.ToString(dr["pedras"]);
+                        pedras1.Text = Convert.ToString(dr["pedras1"]);
+                        pedras2.Text = Convert.ToString(dr["pedras2"]);
+                        pedras3.Text = Convert.ToString(dr["pedras3"]);
+                        pedras4.Text = Convert.ToString(dr["pedras4"]);
+                        pedras5.Text = Convert.ToString(dr["pedras5"]);
+                        fundicao.Text = Convert.ToString(dr["fundicao"]);
+                        feitio.Text = Convert.ToString(dr["feitio"]);
+                        cravacao.Text = Convert.ToString(dr["cravacao"]);
+                        polimento.Text = Convert.ToString(dr["polimento"]);
+                        banhoródio.Text = Convert.ToString(dr["banhorodio"]);
+                        incm.Text = Convert.ToString(dr["incm"]);
+                        abertura.Text = Convert.ToString(dr["abertura"]);
+                        preco.Text = Convert.ToString(dr["preco"]);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("A tabela do preço dos orçamentos não foi encontrada!");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("A tabela do preço dos orçamentos não foi encontrada!");
+                    MessageBox.Show("Erro: " + ex);
                 }
-
             }
             else
             {
@@ -118,41 +132,63 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex);
+                }
+
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex);
+                }
             }
         }
 
         private void filtro_TextChanged(object sender, EventArgs e)
         {
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento WHERE idorçamento LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT * FROM horçamento WHERE idorçamento LIKE '%{filtro.Text}%' OR idencomenda LIKE '%{filtro.Text}%'", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex);
+            }
         }
     }
 }

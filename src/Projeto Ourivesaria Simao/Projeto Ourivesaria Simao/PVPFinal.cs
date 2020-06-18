@@ -16,15 +16,23 @@ namespace Projeto_Ourivesaria_Simao
         public PVPFinal()
         {
             InitializeComponent();
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...'", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...'", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro : " + ex);
+            }
+
 
             metal.Text = "0";
             pedras.Text = "0";
@@ -46,27 +54,43 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...' ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...' ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex);
+                }
+
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...' ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando PVP...' ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex);
+                }
+
             }
         }
 
@@ -110,6 +134,7 @@ namespace Projeto_Ourivesaria_Simao
             //Button
             mpreco.Visible = true;
             criar.Visible = true;
+
 
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
 
@@ -166,34 +191,41 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (criar.Text == "Aplicar")
             {
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
+                    string updtquery;
+                    updtquery = $"UPDATE porçamento SET metal=@metal, pedras=@pedras, pedras1=@pedras1, pedras2=@pedras2, pedras3=@pedras3, pedras4=@pedras4, pedras5=@pedras5, fundicao=@fundicao, feitio=@feitio, cravacao=@cravacao, polimento=@polimento, banhorodio=@banhorodio, incm=@incm, abertura=@abertura  WHERE precoid = '1'";
+                    MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
 
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
-                string updtquery;
-                updtquery = $"UPDATE porçamento SET metal=@metal, pedras=@pedras, pedras1=@pedras1, pedras2=@pedras2, pedras3=@pedras3, pedras4=@pedras4, pedras5=@pedras5, fundicao=@fundicao, feitio=@feitio, cravacao=@cravacao, polimento=@polimento, banhorodio=@banhorodio, incm=@incm, abertura=@abertura  WHERE precoid = '1'";
-                MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
+                    ucmd.Parameters.AddWithValue("@metal", Convert.ToDecimal(pmetal.Text));
+                    ucmd.Parameters.AddWithValue("@pedras", Convert.ToDecimal(ppedras.Text));
+                    ucmd.Parameters.AddWithValue("@pedras1", Convert.ToDecimal(ppedras1.Text));
+                    ucmd.Parameters.AddWithValue("@pedras2", Convert.ToDecimal(ppedras2.Text));
+                    ucmd.Parameters.AddWithValue("@pedras3", Convert.ToDecimal(ppedras3.Text));
+                    ucmd.Parameters.AddWithValue("@pedras4", Convert.ToDecimal(ppedras4.Text));
+                    ucmd.Parameters.AddWithValue("@pedras5", Convert.ToDecimal(ppedras5.Text));
+                    ucmd.Parameters.AddWithValue("@fundicao", Convert.ToDecimal(pfundicao.Text));
+                    ucmd.Parameters.AddWithValue("@feitio", Convert.ToDecimal(pfeitio.Text));
+                    ucmd.Parameters.AddWithValue("@cravacao", Convert.ToDecimal(pcravacao.Text));
+                    ucmd.Parameters.AddWithValue("@polimento", Convert.ToDecimal(ppolimento.Text));
+                    ucmd.Parameters.AddWithValue("@banhorodio", Convert.ToDecimal(pbanho.Text));
+                    ucmd.Parameters.AddWithValue("@incm", Convert.ToDecimal(pincm.Text));
+                    ucmd.Parameters.AddWithValue("@abertura", Convert.ToDecimal(pabertura.Text));
 
-                ucmd.Parameters.AddWithValue("@metal", Convert.ToDecimal(pmetal.Text));
-                ucmd.Parameters.AddWithValue("@pedras", Convert.ToDecimal(ppedras.Text));
-                ucmd.Parameters.AddWithValue("@pedras1", Convert.ToDecimal(ppedras1.Text));
-                ucmd.Parameters.AddWithValue("@pedras2", Convert.ToDecimal(ppedras2.Text));
-                ucmd.Parameters.AddWithValue("@pedras3", Convert.ToDecimal(ppedras3.Text));
-                ucmd.Parameters.AddWithValue("@pedras4", Convert.ToDecimal(ppedras4.Text));
-                ucmd.Parameters.AddWithValue("@pedras5", Convert.ToDecimal(ppedras5.Text));
-                ucmd.Parameters.AddWithValue("@fundicao", Convert.ToDecimal(pfundicao.Text));
-                ucmd.Parameters.AddWithValue("@feitio", Convert.ToDecimal(pfeitio.Text));
-                ucmd.Parameters.AddWithValue("@cravacao", Convert.ToDecimal(pcravacao.Text));
-                ucmd.Parameters.AddWithValue("@polimento", Convert.ToDecimal(ppolimento.Text));
-                ucmd.Parameters.AddWithValue("@banhorodio", Convert.ToDecimal(pbanho.Text));
-                ucmd.Parameters.AddWithValue("@incm", Convert.ToDecimal(pincm.Text));
-                ucmd.Parameters.AddWithValue("@abertura", Convert.ToDecimal(pabertura.Text));
+                    ucmd.ExecuteNonQuery();
 
-                ucmd.ExecuteNonQuery();
+                    MessageBox.Show("Valores alterados com sucesso");
 
-                MessageBox.Show("Valores alterados com sucesso");
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex);
+                }
 
-                dbcon.Close();
 
                 //Labels
                 lpreco.Visible = false;
@@ -254,6 +286,7 @@ namespace Projeto_Ourivesaria_Simao
                     orcpvp = orcpvp + Convert.ToInt32(banhoródio.Text) * Convert.ToDecimal(pbanho.Text);
                     orcpvp = orcpvp + Convert.ToInt32(incm.Text) * Convert.ToDecimal(pincm.Text);
                     orcpvp = orcpvp + Convert.ToInt32(abertura.Text) * Convert.ToDecimal(pabertura.Text);
+                    orcpvp = orcpvp * 1.23M;
 
                 }
                 catch (Exception ex)
@@ -267,42 +300,51 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 else
                 {
-                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                    MySqlConnection dbcon = new MySqlConnection(dbcr);
-                    dbcon.Open();
-                    string updtquery;
-                    updtquery = $"UPDATE encomendas SET statusencomenda=@statusencomenda , pvporc=@pvporc  WHERE idencomenda = '{nome.Text}'";
-                    MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
-                    ucmd.Parameters.AddWithValue("statusencomenda", "Concluido");
-                    ucmd.Parameters.AddWithValue("pvporc", orcpvp);
-                    ucmd.ExecuteNonQuery();
+                    try
+                    {
+                        string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                        MySqlConnection dbcon = new MySqlConnection(dbcr);
+                        dbcon.Open();
+                        string updtquery;
+                        updtquery = $"UPDATE encomendas SET statusencomenda=@statusencomenda , preco=@preco  WHERE idencomenda = '{nome.Text}'";
+                        MySqlCommand ucmd = new MySqlCommand(updtquery, dbcon);
+                        ucmd.Parameters.AddWithValue("statusencomenda", "Concluido");
+                        ucmd.Parameters.AddWithValue("preco", orcpvp);
+                        ucmd.ExecuteNonQuery();
+                        MessageBox.Show("Preço atribuido com sucesso!");
 
 
-                    string insquery = "INSERT INTO horçamento (idencomenda,metal,pedras,pedras1,pedras2,pedras3,pedras4,pedras5,fundicao,feitio,cravacao,polimento,banhorodio,incm,abertura,preco) VALUES (@idencomenda,@metal,@pedras,@pedras1,@pedras2,@pedras3,@pedras4,@pedras5,@fundicao,@feitio,@cravacao,@polimento,@banhorodio,@incm,@abertura,@preco);";
-                    MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
-                    cmd.Parameters.AddWithValue("@idencomenda", nome.Text);
-                    cmd.Parameters.AddWithValue("@metal", metal.Text);
-                    cmd.Parameters.AddWithValue("@pedras", pedras.Text);
-                    cmd.Parameters.AddWithValue("@pedras1", pedras1.Text);
-                    cmd.Parameters.AddWithValue("@pedras2", pedras2.Text);
-                    cmd.Parameters.AddWithValue("@pedras3", pedras3.Text);
-                    cmd.Parameters.AddWithValue("@pedras4", pedras4.Text);
-                    cmd.Parameters.AddWithValue("@pedras5", pedras5.Text);
-                    cmd.Parameters.AddWithValue("@fundicao", fundicao.Text);
-                    cmd.Parameters.AddWithValue("@feitio", feitio.Text);
-                    cmd.Parameters.AddWithValue("@cravacao", cravacao.Text);
-                    cmd.Parameters.AddWithValue("@polimento", polimento.Text);
-                    cmd.Parameters.AddWithValue("@banhorodio", banhoródio.Text);
-                    cmd.Parameters.AddWithValue("@incm", incm.Text);
-                    cmd.Parameters.AddWithValue("@abertura", abertura.Text);
-                    cmd.Parameters.AddWithValue("@preco", orcpvp);
-                    cmd.ExecuteNonQuery();
+                        string insquery = "INSERT INTO horçamento (idencomenda,metal,pedras,pedras1,pedras2,pedras3,pedras4,pedras5,fundicao,feitio,cravacao,polimento,banhorodio,incm,abertura,preco) VALUES (@idencomenda,@metal,@pedras,@pedras1,@pedras2,@pedras3,@pedras4,@pedras5,@fundicao,@feitio,@cravacao,@polimento,@banhorodio,@incm,@abertura,@preco);";
+                        MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
+                        cmd.Parameters.AddWithValue("@idencomenda", nome.Text);
+                        cmd.Parameters.AddWithValue("@metal", metal.Text);
+                        cmd.Parameters.AddWithValue("@pedras", pedras.Text);
+                        cmd.Parameters.AddWithValue("@pedras1", pedras1.Text);
+                        cmd.Parameters.AddWithValue("@pedras2", pedras2.Text);
+                        cmd.Parameters.AddWithValue("@pedras3", pedras3.Text);
+                        cmd.Parameters.AddWithValue("@pedras4", pedras4.Text);
+                        cmd.Parameters.AddWithValue("@pedras5", pedras5.Text);
+                        cmd.Parameters.AddWithValue("@fundicao", fundicao.Text);
+                        cmd.Parameters.AddWithValue("@feitio", feitio.Text);
+                        cmd.Parameters.AddWithValue("@cravacao", cravacao.Text);
+                        cmd.Parameters.AddWithValue("@polimento", polimento.Text);
+                        cmd.Parameters.AddWithValue("@banhorodio", banhoródio.Text);
+                        cmd.Parameters.AddWithValue("@incm", incm.Text);
+                        cmd.Parameters.AddWithValue("@abertura", abertura.Text);
+                        cmd.Parameters.AddWithValue("@preco", orcpvp);
+                        cmd.ExecuteNonQuery();
 
-                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
-                    DataTable dtbl = new DataTable();
-                    myda.Fill(dtbl);
-                    dataGridView1.DataSource = dtbl;
-                    dbcon.Close();
+                        MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
+                        DataTable dtbl = new DataTable();
+                        myda.Fill(dtbl);
+                        dataGridView1.DataSource = dtbl;
+                        dbcon.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro : " + ex);
+                    }
+
 
                     //labels
                     qtd.Visible = false;

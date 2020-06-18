@@ -28,7 +28,6 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (tipoutilizador.SelectedItem == "atendimento")
             {
-                InitializeComponent();
                 string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
                 MySqlConnection dbcon = new MySqlConnection(dbcr);//Comando que efetua a ligação a base de dados
                 dbcon.Open();

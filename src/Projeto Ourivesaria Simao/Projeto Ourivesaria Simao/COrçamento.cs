@@ -15,15 +15,23 @@ namespace Projeto_Ourivesaria_Simao
         public COrçamento()
         {
             InitializeComponent();
-            string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-            MySqlConnection dbcon = new MySqlConnection(dbcr);
-            dbcon.Open();
+            try
+            {
+                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                MySqlConnection dbcon = new MySqlConnection(dbcr);
+                dbcon.Open();
 
-            MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
-            DataTable dtbl = new DataTable();
-            myda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dbcon.Close();
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
+                DataTable dtbl = new DataTable();
+                myda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                dbcon.Close();
+            }
+            catch
+            {
+                MessageBox.Show("");
+            }
+
 
             metal.Text = "0";
             pedras.Text = "0";
@@ -47,27 +55,43 @@ namespace Projeto_Ourivesaria_Simao
         {
             if (ordenar.SelectedItem == "Mais Recente")
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data DESC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data DESC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("");
+                }
+
             }
             else
             {
-                string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
-                MySqlConnection dbcon = new MySqlConnection(dbcr);
-                dbcon.Open();
+                try
+                {
+                    string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
+                    MySqlConnection dbcon = new MySqlConnection(dbcr);
+                    dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data ASC", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...' ORDER BY data ASC", dbcon);
+                    DataTable dtbl = new DataTable();
+                    myda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                    dbcon.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("");
+                }
+
             }
         }
 
@@ -112,6 +136,7 @@ namespace Projeto_Ourivesaria_Simao
             mpreco.Visible = true;
             criar.Visible = true;
 
+
             string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
 
             MySqlConnection dbcon = new MySqlConnection(dbcr);
@@ -145,9 +170,6 @@ namespace Projeto_Ourivesaria_Simao
                 MessageBox.Show("A tabela do preço dos orçamentos não foi encontrada!");
             }
 
-
-
-
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
@@ -160,9 +182,6 @@ namespace Projeto_Ourivesaria_Simao
 
             }
             dbcon.Close();
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -257,6 +276,7 @@ namespace Projeto_Ourivesaria_Simao
                 orcpvp = orcpvp + Convert.ToInt32(banhoródio.Text) * Convert.ToDecimal(pbanho.Text);
                 orcpvp = orcpvp + Convert.ToInt32(incm.Text) * Convert.ToDecimal(pincm.Text);
                 orcpvp = orcpvp + Convert.ToInt32(abertura.Text) * Convert.ToDecimal(pabertura.Text);
+                orcpvp = orcpvp * 1.23M;
          
                 }
                 catch(Exception ex)
@@ -280,32 +300,42 @@ namespace Projeto_Ourivesaria_Simao
                 ucmd.Parameters.AddWithValue("pvporc", orcpvp);
                 ucmd.ExecuteNonQuery();
 
-                
-                string insquery = "INSERT INTO horçamento (idencomenda,metal,pedras,pedras1,pedras2,pedras3,pedras4,pedras5,fundicao,feitio,cravacao,polimento,banhorodio,incm,abertura,preco) VALUES (@idencomenda,@metal,@pedras,@pedras1,@pedras2,@pedras3,@pedras4,@pedras5,@fundicao,@feitio,@cravacao,@polimento,@banhorodio,@incm,@abertura,@preco);";
-                MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
-                cmd.Parameters.AddWithValue("@idencomenda", nome.Text);
-                cmd.Parameters.AddWithValue("@metal", metal.Text);
-                cmd.Parameters.AddWithValue("@pedras", pedras.Text);
-                cmd.Parameters.AddWithValue("@pedras1", pedras1.Text);
-                cmd.Parameters.AddWithValue("@pedras2", pedras2.Text);
-                cmd.Parameters.AddWithValue("@pedras3", pedras3.Text);
-                cmd.Parameters.AddWithValue("@pedras4", pedras4.Text);
-                cmd.Parameters.AddWithValue("@pedras5", pedras5.Text);
-                cmd.Parameters.AddWithValue("@fundicao", fundicao.Text);
-                cmd.Parameters.AddWithValue("@feitio", feitio.Text);
-                cmd.Parameters.AddWithValue("@cravacao", cravacao.Text);
-                cmd.Parameters.AddWithValue("@polimento", polimento.Text);
-                cmd.Parameters.AddWithValue("@banhorodio", banhoródio.Text);
-                cmd.Parameters.AddWithValue("@incm", incm.Text);
-                cmd.Parameters.AddWithValue("@abertura", abertura.Text);
-                cmd.Parameters.AddWithValue("@preco", orcpvp);
-                cmd.ExecuteNonQuery();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
-                DataTable dtbl = new DataTable();
-                myda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-                dbcon.Close();
+                try
+                    {
+                        string insquery = "INSERT INTO horçamento (idencomenda,metal,pedras,pedras1,pedras2,pedras3,pedras4,pedras5,fundicao,feitio,cravacao,polimento,banhorodio,incm,abertura,preco) VALUES (@idencomenda,@metal,@pedras,@pedras1,@pedras2,@pedras3,@pedras4,@pedras5,@fundicao,@feitio,@cravacao,@polimento,@banhorodio,@incm,@abertura,@preco);";
+                        MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
+                        cmd.Parameters.AddWithValue("@idencomenda", nome.Text);
+                        cmd.Parameters.AddWithValue("@metal", metal.Text);
+                        cmd.Parameters.AddWithValue("@pedras", pedras.Text);
+                        cmd.Parameters.AddWithValue("@pedras1", pedras1.Text);
+                        cmd.Parameters.AddWithValue("@pedras2", pedras2.Text);
+                        cmd.Parameters.AddWithValue("@pedras3", pedras3.Text);
+                        cmd.Parameters.AddWithValue("@pedras4", pedras4.Text);
+                        cmd.Parameters.AddWithValue("@pedras5", pedras5.Text);
+                        cmd.Parameters.AddWithValue("@fundicao", fundicao.Text);
+                        cmd.Parameters.AddWithValue("@feitio", feitio.Text);
+                        cmd.Parameters.AddWithValue("@cravacao", cravacao.Text);
+                        cmd.Parameters.AddWithValue("@polimento", polimento.Text);
+                        cmd.Parameters.AddWithValue("@banhorodio", banhoródio.Text);
+                        cmd.Parameters.AddWithValue("@incm", incm.Text);
+                        cmd.Parameters.AddWithValue("@abertura", abertura.Text);
+                        cmd.Parameters.AddWithValue("@preco", orcpvp);
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Orçamento criado com sucesso");
+
+                        MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
+                        DataTable dtbl = new DataTable();
+                        myda.Fill(dtbl);
+                        dataGridView1.DataSource = dtbl;
+                        dbcon.Close();
+                    }
+                catch(Exception ex)
+                    {
+
+                    }
+
 
                 //labels
                 qtd.Visible = false;

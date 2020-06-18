@@ -39,6 +39,7 @@
             this.cOrçamento = new System.Windows.Forms.ToolStripMenuItem();
             this.hOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
             this.gstocko = new System.Windows.Forms.ToolStripMenuItem();
+            this.preçoFinalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.painelAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aFClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.aEncomendas = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,6 @@
             this.username = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.preçoFinalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +140,13 @@
             this.gstocko.Text = "Gestão de Stock";
             this.gstocko.Click += new System.EventHandler(this.gstocko_Click);
             // 
+            // preçoFinalToolStripMenuItem
+            // 
+            this.preçoFinalToolStripMenuItem.Name = "preçoFinalToolStripMenuItem";
+            this.preçoFinalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.preçoFinalToolStripMenuItem.Text = "Preço Final";
+            this.preçoFinalToolStripMenuItem.Click += new System.EventHandler(this.preçoFinalToolStripMenuItem_Click);
+            // 
             // painelAdminToolStripMenuItem
             // 
             this.painelAdminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -228,13 +235,6 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.programexit);
             // 
-            // preçoFinalToolStripMenuItem
-            // 
-            this.preçoFinalToolStripMenuItem.Name = "preçoFinalToolStripMenuItem";
-            this.preçoFinalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.preçoFinalToolStripMenuItem.Text = "Preço Final";
-            this.preçoFinalToolStripMenuItem.Click += new System.EventHandler(this.preçoFinalToolStripMenuItem_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,7 +248,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Menu - Ourivesaria Simão";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.programexit);
             this.menuStrip1.ResumeLayout(false);
