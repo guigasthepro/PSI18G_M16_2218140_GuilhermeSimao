@@ -21,7 +21,7 @@ namespace Projeto_Ourivesaria_Simao
                 string dbcr = "datasource=127.0.0.1;port=3306;username=root;password=;database=ourivesariadb";
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
-                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda,começa,termina,pvporc,preco FROM encomendas", dbcon);
+                MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT fichascliente.nomecliente, encomendas.idencomenda, encomendas.nomeencomenda, encomendas.tipoencomenda, encomendas.descricao, encomendas.statusencomenda, encomendas.começa, encomendas.termina, encomendas.pvporc, encomendas.preco FROM encomendas LEFT JOIN fichascliente ON encomendas.nrcliente = fichascliente.nrcliente", dbcon);
                 DataTable dtbl2 = new DataTable();
                 myda2.Fill(dtbl2);
                 dataGridView1.DataSource = dtbl2;
@@ -35,7 +35,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
 
                 try
@@ -44,7 +44,7 @@ namespace Projeto_Ourivesaria_Simao
                     MySqlConnection dbcon = new MySqlConnection(dbcr);
                     dbcon.Open();
 
-                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda,começa,termina,pvporc,preco FROM encomendas ORDER BY data DESC", dbcon);
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT fichascliente.nomecliente, encomendas.idencomenda, encomendas.nomeencomenda, encomendas.tipoencomenda, encomendas.descricao, encomendas.statusencomenda, encomendas.começa, encomendas.termina, encomendas.pvporc, encomendas.preco, encomendas.data FROM encomendas LEFT JOIN fichascliente ON encomendas.nrcliente = fichascliente.nrcliente ORDER BY data DESC", dbcon);
                     DataTable dtbl = new DataTable();
                     myda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
@@ -65,7 +65,7 @@ namespace Projeto_Ourivesaria_Simao
                     MySqlConnection dbcon = new MySqlConnection(dbcr);
                     dbcon.Open();
 
-                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda,começa,termina,pvporc,preco FROM encomendas ORDER BY data ASC", dbcon);
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT fichascliente.nomecliente, encomendas.idencomenda, encomendas.nomeencomenda, encomendas.tipoencomenda, encomendas.descricao, encomendas.statusencomenda, encomendas.começa, encomendas.termina, encomendas.pvporc, encomendas.preco, encomendas.data FROM encomendas LEFT JOIN fichascliente ON encomendas.nrcliente = fichascliente.nrcliente ORDER BY data ASC", dbcon);
                     DataTable dtbl = new DataTable();
                     myda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
@@ -87,7 +87,7 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda,nomecliente,nomeencomenda,tipoencomenda,descricao,statusencomenda,começa,termina,pvporc,preco FROM encomendas WHERE nomecliente LIKE '%{filtro.Text}%'", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT fichascliente.nomecliente, encomendas.idencomenda, encomendas.nomeencomenda, encomendas.tipoencomenda, encomendas.descricao, encomendas.statusencomenda, encomendas.começa, encomendas.termina, encomendas.pvporc, encomendas.preco FROM encomendas LEFT JOIN fichascliente ON encomendas.nrcliente = fichascliente.nrcliente WHERE encomendas.idencomenda LIKE '%{filtro.Text}%' OR fichascliente.nomecliente LIKE '%{filtro.Text}%'", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;

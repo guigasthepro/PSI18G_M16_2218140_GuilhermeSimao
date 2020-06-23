@@ -28,7 +28,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!" + "Erro : " + ex);
             }
 
         }
@@ -78,7 +78,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -94,7 +94,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!  " + "Erro: " + ex);
                 }
 
             }
@@ -114,7 +114,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                    MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!" + "Erro : " + ex);
                 }
 
             }
@@ -136,7 +136,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!");
+                MessageBox.Show("Não consegui dar reload na tabela, tente novamente mais tarde, se o problema persistir por favor contacto o criador do programa!" + "Erro: " + ex);
             }
         }
     }

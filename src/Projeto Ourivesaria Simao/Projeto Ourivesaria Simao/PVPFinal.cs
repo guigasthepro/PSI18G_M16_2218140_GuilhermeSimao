@@ -52,7 +52,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -291,7 +291,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Tem que inserir os numeros em todas as caixas mesmo que não tenha sido nada");
+                    MessageBox.Show("Tem que inserir os numeros em todas as caixas mesmo que não tenha sido nada" + ex);
                 }
 
                 if (nome.Text == "")
@@ -312,27 +312,6 @@ namespace Projeto_Ourivesaria_Simao
                         ucmd.Parameters.AddWithValue("preco", orcpvp);
                         ucmd.ExecuteNonQuery();
                         MessageBox.Show("Preço atribuido com sucesso!");
-
-
-                        string insquery = "INSERT INTO horçamento (idencomenda,metal,pedras,pedras1,pedras2,pedras3,pedras4,pedras5,fundicao,feitio,cravacao,polimento,banhorodio,incm,abertura,preco) VALUES (@idencomenda,@metal,@pedras,@pedras1,@pedras2,@pedras3,@pedras4,@pedras5,@fundicao,@feitio,@cravacao,@polimento,@banhorodio,@incm,@abertura,@preco);";
-                        MySqlCommand cmd = new MySqlCommand(insquery, dbcon);
-                        cmd.Parameters.AddWithValue("@idencomenda", nome.Text);
-                        cmd.Parameters.AddWithValue("@metal", metal.Text);
-                        cmd.Parameters.AddWithValue("@pedras", pedras.Text);
-                        cmd.Parameters.AddWithValue("@pedras1", pedras1.Text);
-                        cmd.Parameters.AddWithValue("@pedras2", pedras2.Text);
-                        cmd.Parameters.AddWithValue("@pedras3", pedras3.Text);
-                        cmd.Parameters.AddWithValue("@pedras4", pedras4.Text);
-                        cmd.Parameters.AddWithValue("@pedras5", pedras5.Text);
-                        cmd.Parameters.AddWithValue("@fundicao", fundicao.Text);
-                        cmd.Parameters.AddWithValue("@feitio", feitio.Text);
-                        cmd.Parameters.AddWithValue("@cravacao", cravacao.Text);
-                        cmd.Parameters.AddWithValue("@polimento", polimento.Text);
-                        cmd.Parameters.AddWithValue("@banhorodio", banhoródio.Text);
-                        cmd.Parameters.AddWithValue("@incm", incm.Text);
-                        cmd.Parameters.AddWithValue("@abertura", abertura.Text);
-                        cmd.Parameters.AddWithValue("@preco", orcpvp);
-                        cmd.ExecuteNonQuery();
 
                         MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT idencomenda, nomeencomenda, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE statusencomenda = 'Aguardando Orçamento...'", dbcon);
                         DataTable dtbl = new DataTable();

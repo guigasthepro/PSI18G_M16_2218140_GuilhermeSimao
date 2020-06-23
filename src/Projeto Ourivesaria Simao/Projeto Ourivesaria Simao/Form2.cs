@@ -42,6 +42,7 @@ namespace Projeto_Ourivesaria_Simao
                         aFClientes.Visible = false;
                         aOrçamentos.Visible = false;
                         rUtilizador.Visible = false;
+                        pvp.Visible = false;
 
                     }
                     else if (Convert.ToBoolean(dr["oficina"]))
@@ -57,6 +58,7 @@ namespace Projeto_Ourivesaria_Simao
                         aFClientes.Visible = false;
                         aOrçamentos.Visible = false;
                         rUtilizador.Visible = false;
+                        pvp.Visible = false;
                     }
                     else if (Convert.ToBoolean(dr["orçamento"]))
                     {

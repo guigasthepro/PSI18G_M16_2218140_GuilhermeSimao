@@ -29,7 +29,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
 
             
@@ -59,9 +59,8 @@ namespace Projeto_Ourivesaria_Simao
                 string nomecliente = Convert.ToString(dr["nomecliente"]);
                 dr.Close();
       
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO encomendas (nomecliente,nrcliente,nomeencomenda,descricao,tipoencomenda,pedirorc,statusencomenda) VALUES (@nomecliente,@nrcliente,@nomeencomenda,@descricao,@tipoencomenda,@pedirorc,@statusencomenda);", dbcon);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO encomendas (nrcliente,nomeencomenda,descricao,tipoencomenda,pedirorc,statusencomenda) VALUES (@nrcliente,@nomeencomenda,@descricao,@tipoencomenda,@pedirorc,@statusencomenda);", dbcon);
                 cmd.Parameters.AddWithValue("@nrcliente", nrcliente);
-                cmd.Parameters.AddWithValue("@nomecliente", nomecliente);
                 cmd.Parameters.AddWithValue("@nomeencomenda", nomeencomenda.Text);
 
                 //Este if indica que tipo de encomenda ele vai inserir na base de dados
@@ -103,7 +102,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
         }
 
@@ -124,7 +123,7 @@ namespace Projeto_Ourivesaria_Simao
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -140,7 +139,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
             }
             else
@@ -159,7 +158,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
             }
         }
@@ -180,7 +179,8 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
+            
             }
 
         }

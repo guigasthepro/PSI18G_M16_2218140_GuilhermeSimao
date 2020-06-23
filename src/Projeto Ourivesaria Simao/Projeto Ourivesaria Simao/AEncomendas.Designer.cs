@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AEncomendas));
             this.label1 = new System.Windows.Forms.Label();
             this.filtro = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -149,8 +150,9 @@
             this.Controls.Add(this.ordenar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AEncomendas";
-            this.Text = "AEncomendas";
+            this.Text = "Menu - Apagar Encomendas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

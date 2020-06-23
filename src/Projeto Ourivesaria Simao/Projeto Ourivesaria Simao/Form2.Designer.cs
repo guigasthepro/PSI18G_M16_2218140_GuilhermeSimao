@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.atendimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cFClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.cFEncomendas = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,7 @@
             this.cOrçamento = new System.Windows.Forms.ToolStripMenuItem();
             this.hOrçamentos = new System.Windows.Forms.ToolStripMenuItem();
             this.gstocko = new System.Windows.Forms.ToolStripMenuItem();
-            this.preçoFinalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pvp = new System.Windows.Forms.ToolStripMenuItem();
             this.painelAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aFClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.aEncomendas = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,10 +115,10 @@
             this.cOrçamento,
             this.hOrçamentos,
             this.gstocko,
-            this.preçoFinalToolStripMenuItem});
+            this.pvp});
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
-            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.orçamentosToolStripMenuItem.Text = "Orçamentos";
+            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.orçamentosToolStripMenuItem.Text = "Contabilidade";
             // 
             // cOrçamento
             // 
@@ -140,12 +141,12 @@
             this.gstocko.Text = "Gestão de Stock";
             this.gstocko.Click += new System.EventHandler(this.gstocko_Click);
             // 
-            // preçoFinalToolStripMenuItem
+            // pvp
             // 
-            this.preçoFinalToolStripMenuItem.Name = "preçoFinalToolStripMenuItem";
-            this.preçoFinalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.preçoFinalToolStripMenuItem.Text = "Preço Final";
-            this.preçoFinalToolStripMenuItem.Click += new System.EventHandler(this.preçoFinalToolStripMenuItem_Click);
+            this.pvp.Name = "pvp";
+            this.pvp.Size = new System.Drawing.Size(190, 22);
+            this.pvp.Text = "PVP";
+            this.pvp.Click += new System.EventHandler(this.preçoFinalToolStripMenuItem_Click);
             // 
             // painelAdminToolStripMenuItem
             // 
@@ -244,6 +245,7 @@
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
@@ -282,6 +284,6 @@
         private System.Windows.Forms.ToolStripMenuItem username;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem preçoFinalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pvp;
     }
 }

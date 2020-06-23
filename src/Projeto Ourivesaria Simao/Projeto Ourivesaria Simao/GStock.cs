@@ -115,6 +115,22 @@ namespace Projeto_Ourivesaria_Simao
                     cmd.ExecuteNonQuery();
                     dbcon.Close();
                     MessageBox.Show("Item inserido com sucesso");
+                    LoadDataGrid();
+
+                    lnome.Visible = false;
+                    tnome.Visible = false;
+
+                    lquantidade.Visible = false;
+                    tquantidade.Visible = false;
+
+                    lfornecedor.Visible = false;
+                    tfornecedor.Visible = false;
+
+                    lpreco.Visible = false;
+                    tpreco.Visible = false;
+                    allfunctions.Visible = false;
+
+
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +153,19 @@ namespace Projeto_Ourivesaria_Simao
                     ucmd.ExecuteNonQuery();
                     MessageBox.Show("Item editado com sucesso");
                     dbcon.Close();
+                    lnome.Visible = false;
+                    tnome.Visible = false;
+
+                    lquantidade.Visible = false;
+                    tquantidade.Visible = false;
+
+                    lfornecedor.Visible = false;
+                    tfornecedor.Visible = false;
+
+                    lpreco.Visible = false;
+                    tpreco.Visible = false;
+
+                    allfunctions.Visible = false;
                 }
                 catch (Exception ex)
                 {
@@ -160,6 +189,22 @@ namespace Projeto_Ourivesaria_Simao
                     ucmd.ExecuteNonQuery();
                     MessageBox.Show("Item removido com sucesso");
                     dbcon.Close();
+
+                    lnome.Visible = false;
+                    tnome.Visible = false;
+
+                    lquantidade.Visible = false;
+                    tquantidade.Visible = false;
+
+                    lfornecedor.Visible = false;
+                    tfornecedor.Visible = false;
+
+                    lpreco.Visible = false;
+                    tpreco.Visible = false;
+
+                    allfunctions.Visible = false;
+
+
                 }
                 catch (Exception ex)
                 {
@@ -186,7 +231,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("´Selecione um utilizador valido");
+                    MessageBox.Show("´Selecione um utilizador valido" + "Erro" + ex);
                     remover.Visible = false;
                     editar.Visible = false;
                 }          
@@ -208,7 +253,7 @@ namespace Projeto_Ourivesaria_Simao
                 MySqlConnection dbcon = new MySqlConnection(dbcr);
                 dbcon.Open();
 
-                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock WHERE nome LIKE '%{filtro.Text}%' OR fornecedor LIKE '%{filtro.Text}%'", dbcon);
+                MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT produtoid, nome, quantidade, fornecedor, preço FROM stock WHERE nome LIKE '%{filtro.Text}%' OR fornecedor LIKE '%{filtro.Text}%'", dbcon);
                 DataTable dtbl = new DataTable();
                 myda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
@@ -223,7 +268,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -231,7 +276,7 @@ namespace Projeto_Ourivesaria_Simao
                     MySqlConnection dbcon = new MySqlConnection(dbcr);
                     dbcon.Open();
 
-                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock ORDER BY data DESC", dbcon);
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT produtoid, nome, quantidade, fornecedor, preço FROM stock ORDER BY data DESC", dbcon);
                     DataTable dtbl = new DataTable();
                     myda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
@@ -251,7 +296,7 @@ namespace Projeto_Ourivesaria_Simao
                     MySqlConnection dbcon = new MySqlConnection(dbcr);
                     dbcon.Open();
 
-                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT nome, fornecedor FROM stock ORDER BY data ASC", dbcon);
+                    MySqlDataAdapter myda = new MySqlDataAdapter($"SELECT produtoid, nome, quantidade, fornecedor, preço FROM stock ORDER BY data ASC", dbcon);
                     DataTable dtbl = new DataTable();
                     myda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;

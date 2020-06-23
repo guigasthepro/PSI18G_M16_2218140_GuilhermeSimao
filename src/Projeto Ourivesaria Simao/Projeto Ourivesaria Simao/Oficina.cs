@@ -148,7 +148,7 @@ namespace Projeto_Ourivesaria_Simao
 
                 if (status == "Aguardando Oficina...")
                 {
-                    if (esctb.SelectedItem == "Acácio")
+                    if (esctb.SelectedItem.ToString() == "Acácio")
                     {
                         try
                         {
@@ -168,12 +168,12 @@ namespace Projeto_Ourivesaria_Simao
                             dataGridView1.DataSource = dtbl;
                             dbcon.Close();
                         }
-                        catch (Exception ex)
+                        catch
                         {
 
                         }
                     }
-                    else if (esctb.SelectedItem == "Marco")
+                    else if (esctb.SelectedItem.ToString() == "Marco")
                     {
                         try
                         {
@@ -195,10 +195,10 @@ namespace Projeto_Ourivesaria_Simao
                         }
                         catch (Exception ex)
                         {
-
+                            MessageBox.Show("Erro : " + ex);
                         }
                     }
-                    else if (esctb.SelectedItem == "João")
+                    else if (esctb.SelectedItem.ToString() == "João")
                     {
                         try
                         {
@@ -220,7 +220,7 @@ namespace Projeto_Ourivesaria_Simao
                         }
                         catch (Exception ex)
                         {
-
+                            MessageBox.Show("Erro : " + ex);
                         }
                     }
                     else
@@ -245,7 +245,7 @@ namespace Projeto_Ourivesaria_Simao
                         }
                         catch (Exception ex)
                         {
-
+                            MessageBox.Show("Erro : " + ex);
                         }
                     }
                 }
@@ -338,7 +338,7 @@ namespace Projeto_Ourivesaria_Simao
 
                 if (status == "No Acácio" || status == "No Marco" || status == "No João" || status == "No Felipe")
                 {
-                    if (esctb.SelectedItem == "Acácio")
+                    if (esctb.SelectedItem.ToString() == "Acácio")
                     {
                         try
                         {
@@ -366,7 +366,7 @@ namespace Projeto_Ourivesaria_Simao
 
 
                     }
-                    else if (esctb.SelectedItem == "Marco")
+                    else if (esctb.SelectedItem.ToString() == "Marco")
                     {
                         try
                         {
@@ -392,7 +392,7 @@ namespace Projeto_Ourivesaria_Simao
                         }
 
                     }
-                    else if (esctb.SelectedItem == "João")
+                    else if (esctb.SelectedItem.ToString() == "João")
                     {
                         try
                         {
@@ -429,7 +429,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {

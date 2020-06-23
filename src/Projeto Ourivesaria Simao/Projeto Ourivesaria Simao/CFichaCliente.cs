@@ -56,9 +56,9 @@ namespace Projeto_Ourivesaria_Simao
                     dbcon.Close();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ficha de cliente não foi criada com sucesso!");
+                MessageBox.Show("Erro : " + ex);
             }
         }
     }

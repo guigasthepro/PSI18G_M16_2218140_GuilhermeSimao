@@ -31,7 +31,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
         }
 
@@ -71,14 +71,14 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
 
         }
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -94,7 +94,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
 
             }
@@ -114,7 +114,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch(Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace Projeto_Ourivesaria_Simao
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
         }
     }

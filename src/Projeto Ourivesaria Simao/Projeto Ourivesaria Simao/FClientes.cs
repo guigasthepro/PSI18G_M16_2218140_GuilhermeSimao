@@ -14,7 +14,6 @@ namespace Projeto_Ourivesaria_Simao
     public partial class FClientes : Form
     {
         string nomeencomenda;
-        string blahblah;
         public void UpdateDataGrid()
         {
             try
@@ -28,9 +27,9 @@ namespace Projeto_Ourivesaria_Simao
                 dataGridView1.DataSource = dtbl;
                 dbcon.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
         }
         public FClientes()
@@ -51,7 +50,7 @@ namespace Projeto_Ourivesaria_Simao
                     DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
 
-                    MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT idencomenda,nomeencomenda, nomecliente, tipoencomenda, descricao, statusencomenda FROM encomendas WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
+                    MySqlDataAdapter myda2 = new MySqlDataAdapter($"SELECT fichascliente.nomecliente, encomendas.idencomenda, encomendas.nomeencomenda, encomendas.tipoencomenda, encomendas.descricao, encomendas.statusencomenda FROM encomendas LEFT JOIN fichascliente ON encomendas.nrcliente = fichascliente.nrcliente WHERE nomecliente = '{row.Cells["nomecliente"].Value.ToString()}'", dbcon);
                     DataTable dtbl2 = new DataTable();
                     myda2.Fill(dtbl2);
                     dataGridView2.DataSource = dtbl2;
@@ -70,9 +69,9 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 dbcon.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
         }
 
@@ -104,9 +103,9 @@ namespace Projeto_Ourivesaria_Simao
                 ucmd.ExecuteNonQuery();
                 dbcon.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
 
             UpdateDataGrid();
@@ -140,16 +139,16 @@ namespace Projeto_Ourivesaria_Simao
                 dataGridView1.DataSource = dtbl;
                 dbcon.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Erro : " + ex);
             }
 
         }
 
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ordenar.SelectedItem == "Mais Recente")
+            if(ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -163,9 +162,9 @@ namespace Projeto_Ourivesaria_Simao
                     dataGridView1.DataSource = dtbl;
                     dbcon.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
             }
             else
@@ -182,9 +181,9 @@ namespace Projeto_Ourivesaria_Simao
                     dataGridView1.DataSource = dtbl;
                     dbcon.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show("Erro : " + ex);
                 }
             }
         }

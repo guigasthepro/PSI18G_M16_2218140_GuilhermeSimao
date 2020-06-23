@@ -53,7 +53,7 @@ namespace Projeto_Ourivesaria_Simao
 
         private void ordenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ordenar.SelectedItem == "Mais Recente")
+            if (ordenar.SelectedItem.ToString() == "Mais Recente")
             {
                 try
                 {
@@ -67,9 +67,9 @@ namespace Projeto_Ourivesaria_Simao
                     dataGridView1.DataSource = dtbl;
                     dbcon.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("");
+                    MessageBox.Show("Erro : " + ex);
                 }
 
             }
@@ -89,7 +89,7 @@ namespace Projeto_Ourivesaria_Simao
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("");
+                    MessageBox.Show("Erro : " + ex);
                 }
 
             }
@@ -279,12 +279,12 @@ namespace Projeto_Ourivesaria_Simao
                 orcpvp = orcpvp * 1.23M;
          
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Tem que inserir os numeros em todas as caixas mesmo que não tenha sido nada");
+                    MessageBox.Show("Erro : " + ex);
                 }
 
-                if(nome.Text== "")
+                if (nome.Text== "")
                 {
                     MessageBox.Show("Por favor selecione um user");
                 }
@@ -331,14 +331,14 @@ namespace Projeto_Ourivesaria_Simao
                         dataGridView1.DataSource = dtbl;
                         dbcon.Close();
                     }
-                catch(Exception ex)
+                    catch (Exception ex)
                     {
-
+                        MessageBox.Show("Erro : " + ex);
                     }
 
 
-                //labels
-                qtd.Visible = false;
+                    //labels
+                    qtd.Visible = false;
                 qtd1.Visible = false;
                 lmetal.Visible = false;
                 lpedras.Visible = false;
